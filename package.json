@@ -1,7 +1,7 @@
 {
 	"name": "ravepro-client",
 	"version": "0.27.0",
-	"license": "MIT",
+	"license": "Apache 2.0",
 	"description": "RavePro Web Client",
 	"main": "index.js",
 	"scripts": {
