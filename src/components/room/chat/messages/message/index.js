@@ -8,7 +8,7 @@ import { roomProfileStore } from 'stores';
 const Box = styled.div`
   display: flex;
   padding: 6px 0;
-  font-size: 13px;
+  font-size: 12.5px;
   position: relative;
   overflow: hidden;
 

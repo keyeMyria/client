@@ -93,7 +93,13 @@ const HideNumber = styled.span`
 @observer
 export class RoomBoardAboutWaitlist extends React.Component {
 	waitlistAdd() {
-		addUser();
+		const userPlaylist = this.props.roomModeWaitlistStore.userPlaylist.slice();
+
+		if (userPlaylist.length == 0) {
+			this.props.roomStore.tab = 'waitlistModePlaylist';
+		} else {
+			addUser();
+		}
 	}
 
 	waitlistKick() {

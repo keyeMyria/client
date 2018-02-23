@@ -1,11 +1,13 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { FormattedMessage } from 'react-intl';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { ButtonGroup, Button, TextField } from 'components/ui';
 import { Source } from './Source';
 import { addSource, moveSource, removeSource } from 'actions/room/waitlist';
+import { injectIntl } from 'utils/intl';
 
 const Box = styled.div``;
 
@@ -14,7 +16,9 @@ const AddSourceBox = styled.div`
 	padding: 0 5px;
 `;
 
-const AddSourceTextField = styled.div`flex: 1;`;
+const AddSourceTextField = styled.div`
+	flex: 1;
+`;
 
 const AddSourceSendButton = styled.div`
 	align-items: flex-end;
@@ -23,7 +27,9 @@ const AddSourceSendButton = styled.div`
 	padding: 5px 0;
 `;
 
-const SourcesList = styled.div`padding: 10px 5px;`;
+const SourcesList = styled.div`
+	padding: 10px 5px;
+`;
 
 const SourceBox = styled.div`
 	user-select: none;
@@ -32,13 +38,15 @@ const SourceBox = styled.div`
 
 const NoSources = styled.div`
 	padding: 30px 0;
+	line-height: 25px;
 	color: ${theme.accent2};
-	font-size: 14px;
+	font-size: 13px;
 	text-align: center;
 `;
 
 @inject('roomModeWaitlistStore')
 @observer
+@injectIntl()
 export class WaitlistPlaylist extends React.Component {
 	constructor(props) {
 		super(props);
@@ -62,6 +70,7 @@ export class WaitlistPlaylist extends React.Component {
 	}
 
 	render() {
+		const { formatMessage } = this.props.intl;
 		const userPlaylist = this.props.roomModeWaitlistStore.userPlaylist.slice();
 
 		return (
@@ -71,19 +80,30 @@ export class WaitlistPlaylist extends React.Component {
 						<TextField
 							autoFocus
 							name="waitlistAddSourceValue"
-							label="Paste Youtube or Soundcloud Link"
+							label={formatMessage({
+								id: "room.waitlist.playlist.addInputPlaceholder",
+								defaultMessage: "Paste Youtube or Soundcloud Link"
+							})}
 							onBlur={(sourceValue) => this.setState({ sourceValue })}
 						/>
 					</AddSourceTextField>
 					<AddSourceSendButton>
-						<Button onClick={this.addSource}>Add</Button>
+						<Button onClick={this.addSource}>
+							<FormattedMessage
+								id="room.waitlist.playlist.addButton"
+								defaultMessage="Add" />
+						</Button>
 					</AddSourceSendButton>
 				</AddSourceBox>
 				<DragDropContext onDragEnd={this.onDragEnd}>
 					<Droppable droppableId="droppable">
 						{(droppableProvided) => (
 							<SourcesList innerRef={droppableProvided.innerRef}>
-								{userPlaylist.length == 0 && <NoSources>You have no sources.</NoSources>}
+								{userPlaylist.length == 0 && <NoSources>
+									<FormattedMessage
+										id="room.waitlist.playlist.noSources"
+										defaultMessage="Your playlist for the room is empty. Add some source from YouTube or SoundCloud for start playing." />
+								</NoSources>}
 								{userPlaylist.map((source, i) => (
 									<Draggable
 										key={source.id}

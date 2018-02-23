@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { router } from 'utils/router';
+import { Caret } from 'components/ui';
 
 import { TopNavUser } from './user';
 import { Logo } from './logo';
@@ -26,6 +27,12 @@ const LogoLink = styled.div`
   cursor: pointer;
 `;
 
+const Lang = styled.div`
+  font-size: 11px;
+  font-weight: 500;
+  color: ${theme.accent2};
+`;
+
 const Right = styled.div`
   display: flex;
   align-items: center;
@@ -37,6 +44,7 @@ export default ({ children }) => (
   <TopNav>
     <Left>
       <LogoLink onClick={() => router.navigate(`/${name}`)}><Logo /></LogoLink>
+      {/* <Lang>RU</Lang><Caret /> */}
       {children}
     </Left>
     <Right>

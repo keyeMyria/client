@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
@@ -156,13 +157,17 @@ export class RoomTopNav extends React.Component {
                 <Button
                   color={theme.accent1.darken(0.12)}
                   onClick={() => unfollow()}>
-                  {'Following'}
+                  <FormattedMessage
+                    id="room.topNav.following"
+                    defaultMessage="Following" />
                 </Button>
               :
                 <Button
                   color={theme.accent1.lighten(0.3)}
                   onClick={() => follow()}>
-                  {'Follow'}
+                  <FormattedMessage
+                    id="room.topNav.follow"
+                    defaultMessage="Follow" />
                 </Button>
               }
               <Button>{humanNumbers(roomStore.followersCount)}</Button>
