@@ -4,6 +4,11 @@ import { wsAPI } from 'utils/wsapi';
 export class RoomChatStore {
   @observable messages;
 
+  @computed
+  get messagesList() {
+    return this.messages.slice();
+  }
+
   constructor() {
     this.reset();
 
