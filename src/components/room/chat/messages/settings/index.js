@@ -79,22 +79,22 @@ const MenuItem = styled(DropdownMenuItem)`
   }
 `;
 
-const stressTest = (prefix = 0) => {
+const stressTest = (prefix = 0, count = 1000, delay = 10) => {
   let k = 0;
 
   let si = setInterval(() => {
-    if (k > 1000) {
+    if (k > count) {
       return clearInterval(si);
     }
 
     createMessage(`${prefix} - kek ${k}`);
     k++;
-  }, 1);
+  }, delay);
 }
 
-const startTests = (count) => {
-  for (let i = 0; i < count; i++) {
-    stressTest(i);
+const startTests = (pcount, scount, delay) => {
+  for (let i = 0; i < pcount; i++) {
+    stressTest(i, scount, delay);
   }
 }
 
@@ -106,7 +106,7 @@ export class RoomChatSettings extends React.Component {
           <i className="zmdi zmdi-more-vert"></i>
         </MenuButton>
         <MenuContent>
-          <MenuItem onClick={() => startTests(2)}>Stress test</MenuItem>
+          <MenuItem onClick={() => startTests(1, 150, 50)}>Stress test</MenuItem>
           <MenuItem onClick={() => removeAllMessages()}>Clear chat</MenuItem>
         </MenuContent>
       </Menu>

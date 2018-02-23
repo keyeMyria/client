@@ -18,11 +18,29 @@ const Welcome = styled.div`
   color: ${theme.accent2};
 `;
 
+const ToBottom = styled.div`
+  background: ${theme.dark2};
+  font-size: 13px;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+`;
+
 export class MessagesBox extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.bottomFixed = true;
+    
+    this.state = {
+      bottomFixed: true
+    }
   }
 
   componentDidUpdate() {
@@ -39,7 +57,15 @@ export class MessagesBox extends React.PureComponent {
 
     if (this.bottomFixed != bottomFixed) {
       this.bottomFixed = bottomFixed;
+      this.setState({ bottomFixed });
     }
+  }
+
+  toBottom = () => {
+    this.bottomFixed = true;
+    this.setState({ bottomFixed: true });
+    const { chatscroll } = this.refs;
+    chatscroll.scrollToBottom();
   }
 
   render() {
@@ -56,6 +82,9 @@ export class MessagesBox extends React.PureComponent {
             <RoomChatMessage key={message.id} message={message} />
           )}
         </Scrollbars>
+        {!this.state.bottomFixed &&
+          <ToBottom onClick={this.toBottom}>To New Messages</ToBottom>
+        }
       </Box>
     );
   }
