@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
+import { Access } from 'components/ui/access';
 import {
   DropdownMenu,
   DropdownMenuButton,
   DropdownMenuContent,
   DropdownMenuItem
 } from 'components/ui';
-import { createMessage, removeAllMessages } from 'actions/room/chat';
+import { skip, kickUser } from 'actions/room/waitlist';
 
 const Menu = styled(DropdownMenu)`
   height: 100%;
   display: flex;
   position: relative;
-  margin-right: -15px;
+  margin-left: 5px;
 `;
 
 const MenuButton = styled(DropdownMenuButton)`
@@ -32,12 +33,12 @@ const MenuButton = styled(DropdownMenuButton)`
 `;
 
 const MenuContent = styled(DropdownMenuContent)`
-  min-width: 150px;
+  min-width: 130px;
   background: ${theme.accent1};
   box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
   border-radius: 4px;
-  bottom: 60px;
-  left: 5px;
+  bottom: 52px;
+  right: 5px;
   position: absolute;
 
   :before {
@@ -48,7 +49,7 @@ const MenuContent = styled(DropdownMenuContent)`
     height: 0;
     width: 0;
     top: 100%;
-    left: 14px;
+    right: 14px;
     border-width: 5px;
     margin: 0 -6px;
     border-top-color: ${theme.accent1};
@@ -79,26 +80,7 @@ const MenuItem = styled(DropdownMenuItem)`
   }
 `;
 
-const stressTest = (prefix = 0) => {
-  let k = 0;
-
-  let si = setInterval(() => {
-    if (k > 1000) {
-      return clearInterval(si);
-    }
-
-    createMessage(`${prefix} - kek ${k}`);
-    k++;
-  }, 1);
-}
-
-const startTests = (count) => {
-  for (let i = 0; i < count; i++) {
-    stressTest(i);
-  }
-}
-
-export class RoomChatSettings extends React.Component {
+export class RoomWaitlistSettings extends React.Component {
   render() {
     return (
       <Menu>
@@ -106,8 +88,12 @@ export class RoomChatSettings extends React.Component {
           <i className="zmdi zmdi-more-vert"></i>
         </MenuButton>
         <MenuContent>
-          <MenuItem onClick={() => startTests(2)}>Stress test</MenuItem>
-          <MenuItem onClick={() => removeAllMessages()}>Clear chat</MenuItem>
+          <Access name="waitlistSkip">
+            <MenuItem onClick={skip}>Skip</MenuItem>
+          </Access>
+          <Access name="waitlistKick">
+            <MenuItem onClick={() => kickUser(true)}>Kick</MenuItem>
+          </Access>
         </MenuContent>
       </Menu>
     );

@@ -5,7 +5,7 @@ import { uniq } from 'ramda';
 
 @inject('userStore', 'userRoomStore')
 @observer
-class Access extends React.Component {
+export class Access extends React.Component {
   isShow() {
     const { name, userStore, userRoomStore } = this.props;
     const contextUser = this.props.context;

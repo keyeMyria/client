@@ -2,16 +2,15 @@ import { apolloClient } from 'utils/apolloClient';
 import gql from 'graphql-tag';
 import { roomStore } from 'stores';
 
-export const kickUser = async (current) => {
+export const skip = async () => {
   await apolloClient.mutate({
     mutation: gql`
-      mutation waitlistKick($roomId: Int!, $current: Boolean) {
-        waitlistKick(roomId: $roomId, current: $current)
+      mutation waitlistSkip($roomId: Int!) {
+        waitlistSkip(roomId: $roomId)
       }
     `,
     variables: {
-      roomId: roomStore.id,
-      current
+      roomId: roomStore.id
     }
   });
 }

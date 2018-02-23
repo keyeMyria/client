@@ -2,9 +2,9 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import Access from 'components/ui/access';
+import { Access } from 'components/ui/access';
 import { ButtonGroup, Button, Modal } from 'components/ui';
-
+import { RoomWaitlistSettings } from './menu';
 import { addUser, removeUser, kickUser } from 'actions/room/waitlist';
 
 const Box = styled.div`
@@ -176,6 +176,9 @@ export class RoomBoardAboutWaitlist extends React.Component {
 							<Button onClick={() => roomStore.tab = 'waitlistModeUsers'}>{usersCountView}</Button>
 						</ButtonGroup>
 					</ActionBox>
+					<Access name="waitlistMenu">
+						<RoomWaitlistSettings />
+					</Access>
 				</Right>
 			</Box>
 		);
