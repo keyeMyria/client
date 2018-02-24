@@ -43,6 +43,10 @@ export class MessagesBox extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.toBottom();
+  }
+
   componentDidUpdate() {
     if (this.bottomFixed) {
       const { chatscroll } = this.refs;
