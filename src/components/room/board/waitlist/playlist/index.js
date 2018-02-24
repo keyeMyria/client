@@ -44,9 +44,9 @@ const NoSources = styled.div`
 	text-align: center;
 `;
 
+@injectIntl()
 @inject('roomModeWaitlistStore')
 @observer
-@injectIntl()
 export class WaitlistPlaylist extends React.Component {
 	constructor(props) {
 		super(props);
