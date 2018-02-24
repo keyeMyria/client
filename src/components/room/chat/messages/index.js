@@ -12,9 +12,11 @@ const Box = styled.div`
 @observer
 export class ChatMessages extends React.Component {
   render() {
+    const { messagesList, fixBottom } = this.props.roomChatStore;
+
     return (
       <Box>
-        <MessagesBox messages={this.props.roomChatStore.messagesList} />
+        <MessagesBox messages={messagesList} fixBottom={fixBottom} />
         <SendMessageForm />
       </Box>
     );

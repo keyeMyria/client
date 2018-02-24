@@ -5,9 +5,10 @@ import { theme } from 'colors';
 import { Line } from 'rc-progress';
 import { uniq } from 'ramda';
 import { checkAccess } from 'utils/access';
-import Access from 'components/ui/access';
+import { Access } from 'components/ui/access';
 import { RoomChatSettings } from './settings';
 import { createMessage } from 'actions/room/chat';
+import { roomChatStore } from 'stores';
 
 const Box = styled.div`
   height: 60px;
@@ -75,7 +76,7 @@ const ChatSendBlock = styled.div`
   font-size: 13px;
 `;
 
-@inject('userStore', 'userRoomStore', 'roomStore', 'roomChatStore')
+@inject('userStore', 'userRoomStore', 'roomStore')
 @observer
 export class SendMessageForm extends React.Component {
   constructor(props) {
@@ -155,6 +156,7 @@ export class SendMessageForm extends React.Component {
     
     createMessage(message).then(() => {
       this.textInput.value = "";
+      roomChatStore.toBottom();
     
       if (this.props.roomStore.slowMode && !this.access('sendMessageSlowModeIgnore')) {
         this.showSlowMode();

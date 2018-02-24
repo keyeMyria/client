@@ -3,6 +3,7 @@ import { wsAPI } from 'utils/wsapi';
 
 export class RoomChatStore {
   @observable messages;
+  @observable fixBottom;
 
   @computed
   get messagesList() {
@@ -41,6 +42,12 @@ export class RoomChatStore {
 
   reset() {
     this.messages = [];
+    this.fixBottom = true;
+  }
+
+  toBottom = () => {
+    this.fixBottom = false;
+    this.fixBottom = true;
   }
 
   addMessage = (message) => {
@@ -57,6 +64,9 @@ export class RoomChatStore {
 
   removeAllMessages = () => {
     this.reset();
+    setTimeout(() => {
+      this.fixBottom = true;
+    }, 50);
   }
 }
 

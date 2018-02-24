@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { RoomChatMessage } from '../message';
+import { roomChatStore } from 'stores';
 
 const Box = styled.div`
   position: relative;
@@ -36,44 +37,46 @@ export class MessagesBox extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.currentTop = 0;
     this.bottomFixed = true;
-    
-    this.state = {
-      bottomFixed: true
-    }
   }
 
   componentDidMount() {
     this.toBottom();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.bottomFixed) {
       const { chatscroll } = this.refs;
       
 
       chatscroll.scrollToBottom();
     }
+
+    if (this.props.fixBottom && !prevProps.fixBottom) {
+      this.toBottom();
+    }
   }
 
   chatScroll = (values) => {
+    this.currentTop = values.top;
     let bottomFixed = values.top >= 0.98;
 
     if (this.bottomFixed != bottomFixed) {
       this.bottomFixed = bottomFixed;
-      this.setState({ bottomFixed });
+      roomChatStore.fixBottom = bottomFixed;
     }
   }
 
   toBottom = () => {
     this.bottomFixed = true;
-    this.setState({ bottomFixed: true });
+    roomChatStore.fixBottom = true;
     const { chatscroll } = this.refs;
     chatscroll.scrollToBottom();
   }
 
   render() {
-    const { messages } = this.props;
+    const { messages, fixBottom } = this.props;
 
     return (
       <Box>
@@ -86,7 +89,7 @@ export class MessagesBox extends React.PureComponent {
             <RoomChatMessage key={message.id} message={message} />
           )}
         </Scrollbars>
-        {!this.state.bottomFixed &&
+        {(this.currentTop > 0 && this.currentTop < 0.98 && !fixBottom && messages.length > 0) &&
           <ToBottom onClick={this.toBottom}>To New Messages</ToBottom>
         }
       </Box>

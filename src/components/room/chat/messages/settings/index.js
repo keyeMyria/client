@@ -106,7 +106,7 @@ export class RoomChatSettings extends React.Component {
           <i className="zmdi zmdi-more-vert"></i>
         </MenuButton>
         <MenuContent>
-          <MenuItem onClick={() => startTests(1, 150, 50)}>Stress test</MenuItem>
+          <MenuItem onClick={() => startTests(2, 2000, 1)}>Stress test</MenuItem>
           <MenuItem onClick={() => removeAllMessages()}>Clear chat</MenuItem>
         </MenuContent>
       </Menu>
