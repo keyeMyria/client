@@ -79,6 +79,7 @@ export class WaitlistPlaylist extends React.Component {
 					<AddSourceTextField>
 						<TextField
 							autoFocus
+							selectAllOnFocus
 							name="waitlistAddSourceValue"
 							label={formatMessage({
 								id: "room.waitlist.playlist.addInputPlaceholder",
