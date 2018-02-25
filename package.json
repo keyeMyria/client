@@ -1,12 +1,12 @@
 {
 	"name": "ravepro-client",
-	"version": "0.28.0",
+	"version": "0.28.1",
 	"license": "Apache-2.0",
 	"description": "RavePro Web Client",
 	"main": "index.js",
 	"scripts": {
 		"dev": "parcel -p 3000 --hmr-port 3020 ./public/index.html",
-		"build": "parcel build ./public/index.html --detailed-report"
+		"build": "parcel build ./public/index.html --detailed-report --public-url ./"
 	},
 	"dependencies": {
 		"apollo-cache-inmemory": "^1.1.9",
