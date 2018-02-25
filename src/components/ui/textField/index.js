@@ -72,6 +72,7 @@ export default class extends React.Component {
 		name: null,
 		value: "",
 		placeholder: null,
+		selectAllOnFocus: false,
 		onFocus: () => {},
     onBlur: () => {},
 		onPressEnter: () => {},
@@ -81,6 +82,10 @@ export default class extends React.Component {
 	onTextFieldFocus(e) {
 		this.setState({ onFocus: true });
 		this.props.onFocus(e.currentTarget.value);
+
+		if (this.props.selectAllOnFocus) {
+			e.target.select();
+		}
 	}
 
   onTextFieldBlur(e) {
