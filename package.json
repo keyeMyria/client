@@ -5,8 +5,8 @@
 	"description": "RavePro Web Client",
 	"main": "index.js",
 	"scripts": {
-		"dev": "parcel -p 3000 --hmr-port 3020 ./public/index.html",
-		"build": "parcel build ./public/index.html --detailed-report --public-url ./"
+		"dev": "parcel -p 3000 --hmr-port 3020 ./src/index.html",
+		"build": "parcel build ./src/index.html --detailed-report --public-url ./"
 	},
 	"dependencies": {
 		"apollo-cache-inmemory": "^1.1.9",
