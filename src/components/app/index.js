@@ -2,13 +2,14 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled, { ThemeProvider } from 'styled-components';
 import { colors, theme } from 'colors';
+import Loading from 'components/ui/loading';
 
 import { Modal } from 'components/ui';
 import { SetUserBan } from 'components/setUserBan';
 import { SetUserRole } from 'components/setUserRole';
 import './styles';
 
-import { get as getCurrentUser } from 'actions/user';
+import { getUser } from 'queries/getUser';
 
 const Box = styled.div`
 	background: ${theme.dark1};
@@ -18,15 +19,19 @@ const Box = styled.div`
 	min-width: 1000px;
 `;
 
-@inject('setBanFormStore', 'setRoleFormStore')
+@inject('userStore', 'setBanFormStore', 'setRoleFormStore')
 @observer
 export class App extends React.Component {
   componentDidMount() {
-    getCurrentUser();
+    getUser();
   }
 
-  render() {
-    const { setBanFormStore, setRoleFormStore, children } = this.props;
+  renderApp() {
+    const {
+      setBanFormStore,
+      setRoleFormStore,
+      children
+    } = this.props;
 
     return (
       <ThemeProvider theme={colors}>
@@ -47,5 +52,18 @@ export class App extends React.Component {
         </Box>
       </ThemeProvider>
     );
+  }
+
+  render() {
+    const { status } = this.props.userStore;
+
+    switch (status) {
+      case 'loading':
+        return <Loading>Loading...</Loading>
+      case 'ready':
+        return this.renderApp();
+      default:
+        return <Loading>Error</Loading>
+    }
   }
 }

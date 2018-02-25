@@ -4,7 +4,7 @@ import { theme } from 'colors';
 import { connect } from 'react-redux';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { modalFullClose } from 'actions/modal';
+// import { modalFullClose } from 'old/modal';
 
 const ModalFull = styled.div`
 	position: fixed;

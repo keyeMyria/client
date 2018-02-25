@@ -7,7 +7,7 @@ import { uniq } from 'ramda';
 import { checkAccess } from 'utils/access';
 import { Access } from 'components/ui/access';
 import { RoomChatSettings } from './settings';
-import { createMessage } from 'actions/room/chat';
+import { createRoomMessage } from 'mutations/createRoomMessage';
 import { roomChatStore } from 'stores';
 
 const Box = styled.div`
@@ -154,7 +154,7 @@ export class SendMessageForm extends React.Component {
 
     if (this.state.slowMode) return;
     
-    createMessage(message).then(() => {
+    createRoomMessage(message).then(() => {
       this.textInput.value = "";
       roomChatStore.toBottom();
     

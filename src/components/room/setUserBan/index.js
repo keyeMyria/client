@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { TextField, Button } from 'components/ui';
-import { ban as banUserRoom } from 'actions/room/user/ban';
+import { banUserRoom } from 'mutations/banUserRoom';
 
 const Box = styled.div`
   width: 400px;

@@ -5,7 +5,9 @@ import { theme } from 'colors';
 import { Access } from 'components/ui/access';
 import { ButtonGroup, Button, Modal } from 'components/ui';
 import { RoomWaitlistSettings } from './menu';
-import { addUser, removeUser, kickUser } from 'actions/room/waitlist';
+import { waitlistAdd } from 'mutations/waitlistAdd';
+import { waitlistRemoveUser } from 'mutations/waitlistRemoveUser';
+import { waitlistKick } from 'mutations/waitlistKick';
 
 const Box = styled.div`
 	display: flex;
@@ -98,16 +100,8 @@ export class RoomBoardAboutWaitlist extends React.Component {
 		if (userPlaylist.length == 0) {
 			this.props.roomStore.tab = 'waitlistModePlaylist';
 		} else {
-			addUser();
+			waitlistAdd();
 		}
-	}
-
-	waitlistKick() {
-		kickUser();
-	}
-	
-	waitlistRemoveUser(userId) {
-		removeUser(userId);
 	}
 
 	render() {
@@ -134,7 +128,7 @@ export class RoomBoardAboutWaitlist extends React.Component {
 			actionView = (
 				<Button
 					color={theme.accent1.darken(0.15)}
-					onClick={() => this.waitlistKick()}>
+					onClick={() => waitlistKick()}>
 					{'Leave Playing'}
 				</Button>
 			);
@@ -144,7 +138,7 @@ export class RoomBoardAboutWaitlist extends React.Component {
 			actionView = (
 				<Button
 					color={theme.accent1.darken(0.15)}
-					onClick={() => this.waitlistRemoveUser(currentUserId)}>
+					onClick={() => waitlistRemoveUser(currentUserId)}>
 					{'Leave Waitlist'}
 				</Button>
 			);

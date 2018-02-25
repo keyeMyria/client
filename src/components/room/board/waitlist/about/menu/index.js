@@ -8,7 +8,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem
 } from 'components/ui';
-import { skip, kickUser } from 'actions/room/waitlist';
+import { waitlistSkip } from 'mutations/waitlistSkip';
+import { waitlistKick } from 'mutations/waitlistKick';
 
 const Menu = styled(DropdownMenu)`
   height: 100%;
@@ -89,10 +90,10 @@ export class RoomWaitlistSettings extends React.Component {
         </MenuButton>
         <MenuContent>
           <Access name="waitlistSkip">
-            <MenuItem onClick={skip}>Skip</MenuItem>
+            <MenuItem onClick={() => waitlistSkip()}>Skip</MenuItem>
           </Access>
           <Access name="waitlistKick">
-            <MenuItem onClick={() => kickUser(true)}>Kick</MenuItem>
+            <MenuItem onClick={() => waitlistKick(true)}>Kick</MenuItem>
           </Access>
         </MenuContent>
       </Menu>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { checkAccess } from 'utils/access';
 import { Button, Dropdown } from 'components/ui';
-import { setRole as setRoleUser } from 'actions/user';
+import { setRoleUser } from 'mutations/setRoleUser';
 
 @inject('setRoleFormStore', 'userStore')
 @observer

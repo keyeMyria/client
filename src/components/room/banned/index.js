@@ -7,7 +7,7 @@ import Access from 'components/ui/access';
 import { Button } from 'components/ui';
 import Loading from 'components/ui/loading';
 
-import { unbanByName } from 'actions/room/unbanByName';
+import { unbanRoomByName } from 'mutations/unbanRoomByName';
 
 const Bottom = styled.div`
   margin-top: 25px;
@@ -24,7 +24,7 @@ const Unban = styled.span`
 @inject('roomStore')
 export class RoomBanned extends React.Component {
   unbanRoom = () => {
-    unbanByName(this.props.roomName);
+    unbanRoomByName(this.props.roomName);
   }
 
   render() {

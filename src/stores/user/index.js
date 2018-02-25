@@ -7,6 +7,7 @@ export class UserStore {
   @observable avatar;
   @observable role;
   @observable banned;
+  @observable status;
 
   constructor() {
     this.reset();
@@ -22,6 +23,7 @@ export class UserStore {
     this.avatar = null;
     this.role = 'guest';
     this.banned = false;
+    this.status = 'loading';
   }
 }
 

@@ -6,8 +6,10 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { ButtonGroup, Button, TextField } from 'components/ui';
 import { Source } from './Source';
-import { addSource, moveSource, removeSource } from 'actions/room/waitlist';
 import { injectIntl } from 'utils/intl';
+import { waitlistAddSource } from 'mutations/waitlistAddSource';
+import { waitlistMoveSource } from 'mutations/waitlistMoveSource';
+import { waitlistRemoveSource } from 'mutations/waitlistRemoveSource';
 
 const Box = styled.div``;
 
@@ -61,12 +63,12 @@ export class WaitlistPlaylist extends React.Component {
 			return;
 		}
 
-		moveSource(result.source.index, result.destination.index);
+		waitlistMoveSource(result.source.index, result.destination.index);
 	};
 
 	addSource = () => {
 		const link = this.state.sourceValue;
-		addSource(link);
+		waitlistAddSource(link);
 	}
 
 	render() {
@@ -126,7 +128,7 @@ export class WaitlistPlaylist extends React.Component {
 														actions={[
 															{
 																title: 'Delete',
-																onClick: () => removeSource(source.id)
+																onClick: () => waitlistRemoveSource(source.id)
 															}
 														]}
 													/>

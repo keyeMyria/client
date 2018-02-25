@@ -7,9 +7,9 @@ import { theme } from 'colors';
 import Access from 'components/ui/access';
 import { TextField, Button } from 'components/ui';
 
-import { setTitle } from 'actions/room/setTitle';
-import { ban } from 'actions/room/ban';
-import { remove } from 'actions/room/remove';
+import { setRoomTitle } from 'mutations/setRoomTitle';
+import { banRoom } from 'mutations/banRoom';
+import { removeRoom } from 'mutations/removeRoom';
 
 const Box = styled.div`
   
@@ -66,14 +66,14 @@ const BanRoom = styled.div`
 @observer
 export class RoomManageGeneral extends React.Component {
   removeRoom = () => {
-    remove().then(() => {
+    removeRoom().then(() => {
       this.props.roomStore.tab = '';
       router.navigate('/');
     });
   }
 
   banRoom = () => {
-    ban().then(() => {
+    banRoom().then(() => {
       this.props.roomStore.tab = '';
       router.navigate('/');
     });
@@ -94,7 +94,7 @@ export class RoomManageGeneral extends React.Component {
             <TextField
               name="roomTitle"
               label="Title"
-              onBlur={setTitle}
+              onBlur={setRoomTitle}
               value={roomStore.title} />
             <Access name="banRoom">
               <BanRoom>

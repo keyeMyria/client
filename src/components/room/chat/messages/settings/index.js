@@ -7,7 +7,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem
 } from 'components/ui';
-import { createMessage, removeAllMessages } from 'actions/room/chat';
+import { createRoomMessage } from 'mutations/createRoomMessage';
+import { clearRoomChat } from 'mutations/clearRoomChat';
 
 const Menu = styled(DropdownMenu)`
   height: 100%;
@@ -87,7 +88,7 @@ const stressTest = (prefix = 0, count = 1000, delay = 10) => {
       return clearInterval(si);
     }
 
-    createMessage(`${prefix} - kek ${k}`);
+    createRoomMessage(`${prefix} - kek ${k}`);
     k++;
   }, delay);
 }
@@ -107,7 +108,7 @@ export class RoomChatSettings extends React.Component {
         </MenuButton>
         <MenuContent>
           <MenuItem onClick={() => startTests(2, 2000, 1)}>Stress test</MenuItem>
-          <MenuItem onClick={() => removeAllMessages()}>Clear chat</MenuItem>
+          <MenuItem onClick={() => clearRoomChat()}>Clear chat</MenuItem>
         </MenuContent>
       </Menu>
     );

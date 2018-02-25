@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, TextField } from 'components/ui';
-import { create as createRoom } from 'actions/main/rooms';
+import { createRoom } from 'mutations/createRoom';
 
 const CreateRoomModal = styled.div`
   width: 400px;

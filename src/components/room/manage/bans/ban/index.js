@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import Access from 'components/ui/access';
-import { unban } from 'actions/room/bans/unban';
+import { unbanUserRoom } from 'mutations/unbanUserRoom';
 
 const Box = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ export class RoomUserBan extends React.PureComponent {
         <Num>{index + 1}</Num>
         <Username>{user.name}</Username>
         <Manage>
-          <ManageItem onClick={() => unban(user.id)}>
+          <ManageItem onClick={() => unbanUserRoom(user.id)}>
             <i className="zmdi zmdi-close"></i>
           </ManageItem>
         </Manage>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import Access from 'components/ui/access';
-import { removeMessage } from 'actions/room/chat';
+import { removeRoomMessage } from 'mutations/removeRoomMessage';
 import { roomProfileStore } from 'stores';
 
 const Box = styled.div`
@@ -117,7 +117,7 @@ export class RoomChatMessage extends React.PureComponent {
 
   deleteMessage = () => {
     const { id } = this.props.message;
-    removeMessage(id);
+    removeRoomMessage(id);
   }
 
   render() {

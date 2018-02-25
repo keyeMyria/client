@@ -8,8 +8,8 @@ import { shortNumbers, humanNumbers } from 'utils';
 import Access from 'components/ui/access';
 import { ButtonGroup, Button } from 'components/ui';
 
-import { follow } from 'actions/room/follow';
-import { unfollow } from 'actions/room/unfollow';
+import { followRoom } from 'mutations/followRoom';
+import { unfollowRoom } from 'mutations/unfollowRoom';
 
 const Box = styled.div`
   display: flex;
@@ -156,7 +156,7 @@ export class RoomTopNav extends React.Component {
               {userRoomStore.follower ? 
                 <Button
                   color={theme.accent1.darken(0.12)}
-                  onClick={() => unfollow()}>
+                  onClick={() => unfollowRoom()}>
                   <FormattedMessage
                     id="room.topNav.following"
                     defaultMessage="Following" />
@@ -164,7 +164,7 @@ export class RoomTopNav extends React.Component {
               :
                 <Button
                   color={theme.accent1.lighten(0.3)}
-                  onClick={() => follow()}>
+                  onClick={() => followRoom()}>
                   <FormattedMessage
                     id="room.topNav.follow"
                     defaultMessage="Follow" />

@@ -4,7 +4,7 @@ import { theme } from 'colors';
 import { uniq } from 'ramda';
 import { checkAccess } from 'utils/access';
 import { Button, Dropdown } from 'components/ui';
-import { setRole as setRoleUserRoom } from 'actions/room/user/setRole';
+import { setRoleUserRoom } from 'mutations/setRoleUserRoom';
 
 @inject('roomSetRoleFormStore', 'userStore', 'userRoomStore')
 @observer

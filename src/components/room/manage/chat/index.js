@@ -6,8 +6,8 @@ import { theme } from 'colors';
 import Access from 'components/ui/access';
 import SWRow from 'components/ui/swrow';
 
-import { changeFollowerMode } from 'actions/room/changeFollowerMode';
-import { changeSlowMode } from 'actions/room/changeSlowMode';
+import { changeFollowerMode } from 'mutations/changeFollowerMode';
+import { changeSlowMode } from 'mutations/changeSlowMode';
 
 const Box = styled.div``;
 

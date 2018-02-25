@@ -9,14 +9,14 @@ import { RoomBanned } from 'components/room/banned';
 import RoomNotFound from 'components/room/notFound';
 import RoomUserBanned from 'components/room/userBanned';
 
-import { getByName } from 'actions/room';
+import { getRoomByName } from 'queries/getRoomByName';
 
 @inject('roomStore')
 @observer
 export class RoomContainer extends React.Component {
   componentDidMount() {
     const { roomName } = this.props.routeParams;
-    getByName(roomName);
+    getRoomByName(roomName);
   }
 
   componentWillUnmount() {

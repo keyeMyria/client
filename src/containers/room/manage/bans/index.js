@@ -1,11 +1,11 @@
 import React from 'react';
 import { RoomBansManager } from 'components/room/manage/bans';
 import { roomBansStore } from 'stores';
-import { get as getUsers } from 'actions/room/bans';
+import { getRoomBans } from 'queries/getRoomBans';
 
 export class RoomBansContainer extends React.Component {
   componentDidMount() {
-    getUsers();
+    getRoomBans();
   }
 
   componentWillUnmount() {
