@@ -4,19 +4,13 @@ import { PlayerControl } from '../control';
 import { PlayerHtml5Audio } from '../html5Audio';
 import { PlayerAudio } from '../';
 
-const getSourceUrl = trackId => {
-  const apiUrl = 'https://api.soundcloud.com/tracks';
-  const clientId = process.env.SC_CLIENT_ID;
-  return `${apiUrl}/${trackId}/stream?client_id=${clientId}`;
-}
-
 @inject('roomPlayerStore', 'roomStore')
 @observer
 export class PlayerSoundCloud extends React.Component {
   render() {
     const { roomPlayerStore, roomStore, playing } = this.props;
     const { source } = playing;
-    const sourceUrl = getSourceUrl(source.serviceId);
+    const sourceUrl = roomPlayerStore.makeSoundCloudURL(source.serviceId);
 
     return (
       <PlayerAudio

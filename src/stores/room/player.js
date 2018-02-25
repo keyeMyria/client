@@ -4,6 +4,7 @@ export class RoomPlayerStore {
   @observable volume;
   @observable paused;
   @observable mute;
+  @observable scKey = "d03bc67acf78cf6f304edecde8cfc48c";
 
   constructor() {
     this.reset();
@@ -13,6 +14,12 @@ export class RoomPlayerStore {
     this.volume = localStorage.volume ? parseInt(localStorage.volume) : 50;
     this.paused = true;
     this.mute = !!parseInt(localStorage.mute);
+  }
+
+  makeSoundCloudURL = trackId => {
+    const apiUrl = 'https://api.soundcloud.com/tracks';
+    const clientId = this.scKey;
+    return `${apiUrl}/${trackId}/stream?client_id=${clientId}`;
   }
 
   setVolume = (value) => {
