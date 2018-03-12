@@ -10,10 +10,6 @@ const Box = styled.div`
   position: relative;
   overflow: hidden;
 
-  :first-child {
-    padding-top: 8px;
-  }
-
   :last-child {
     padding-bottom: 8px;
   }
@@ -43,18 +39,17 @@ const AvatarImg = styled.img`
 const Header = styled.div`
   display: flex;
   width: 100%;
-  height: 22px;
+  height: 18px;
   padding-top: 10px;
 `;
 
 const Username = styled.div`
   font-weight: 500;
-  color: ${theme.accent2.lighten(0.4)};
+  color: ${({ color }) => color ? color : theme.accent2.lighten(0.4)};
   flex: 1;
 `;
 
 const Date = styled.div`
-  margin-left: auto;
   color: ${theme.accent2};
   font-size: 12px;
   text-align: right;
@@ -129,14 +124,24 @@ export class RoomChatMessage extends React.PureComponent {
       date,
       compact
     } = this.props;
-    
+
+    let color = null;
+
+    if (['owner', 'manager', 'mod'].includes(user.room.role)) {
+      color = theme.roomStaff;
+    }
+
+    if (['founder', 'admin'].includes(user.site.role)) {
+      color = theme.siteStaff;
+    }
+
     return (
       <Box>
         {!compact && <Header>
           <Avatar onClick={this.openProfile}>
             {user.site.avatar && <AvatarImg src={user.site.avatar} />}
           </Avatar>
-          <Username>{user.site.name}</Username>
+          <Username color={color}>{user.site.name}</Username>
           <Date>{date}</Date>
         </Header>}
         <Content>
