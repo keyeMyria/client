@@ -1,6 +1,6 @@
 {
 	"name": "ravepro-client",
-	"version": "0.28.1",
+	"version": "0.28.2",
 	"license": "Apache-2.0",
 	"description": "RavePro Web Client",
 	"main": "index.js",
@@ -18,8 +18,8 @@
 		"graphql": "^0.13.1",
 		"graphql-tag": "^2.8.0",
 		"ismobilejs": "^0.4.1",
-		"mobx": "^3.6.1",
-		"mobx-react": "^4.4.3",
+		"mobx": "^4.0.0",
+		"mobx-react": "^5.0.0",
 		"navigo": "^7.1.1",
 		"prop-types": "^15.6.1",
 		"ramda": "^0.25.0",
