@@ -6,8 +6,6 @@ import { removeRoomMessage } from 'mutations/removeRoomMessage';
 import { roomProfileStore } from 'stores';
 
 const Box = styled.div`
-  display: flex;
-  padding: 6px 0;
   font-size: 12.5px;
   position: relative;
   overflow: hidden;
@@ -15,56 +13,65 @@ const Box = styled.div`
   :first-child {
     padding-top: 8px;
   }
-`;
 
-const Left = styled.div`
-  width: 50px;
-  display: flex;
-  justify-content: center;
+  :last-child {
+    padding-bottom: 8px;
+  }
 `;
 
 const Avatar = styled.div`
-  width: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
   height: 26px;
   border-radius: 100%;
-  background: ${theme.dark2};
+  /* background: ${theme.dark2}; */
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  z-index: 20;
 `;
 
 const AvatarImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 26px;
+  height: 26px;
   border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   background: ${theme.dark2};
-`;
-
-const Right = styled.div`
-  width: calc(100% - 60px);
 `;
 
 const Header = styled.div`
   display: flex;
   width: 100%;
+  height: 22px;
+  padding-top: 10px;
 `;
 
 const Username = styled.div`
-  color: ${theme.text1};
-  width: calc(100% - 40px);
+  font-weight: 500;
+  color: ${theme.accent2.lighten(0.4)};
+  flex: 1;
 `;
 
 const Date = styled.div`
   margin-left: auto;
-  width: 40px;
   color: ${theme.accent2};
   font-size: 12px;
   text-align: right;
+  padding: 0 16px;
+`;
+
+const Content = styled.div`
+  position: relative;
+
+  :hover {
+    background: linear-gradient(-90deg, ${theme.dark1.lighten(0.2)}, ${theme.dark1});
+  }
 `;
 
 const Text = styled.div`
   color: ${theme.accent2};
-  padding: 5px 10px 5px 0;
+  padding: 4px 10px 4px 50px;
   overflow: hidden;
   overflow-wrap: break-word;
 `;
@@ -74,25 +81,25 @@ const ManageMenu = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  min-width: 45px;
-  height: 42px;
+  height: 22px;
   padding: 0 10px;
+  margin-right: 4px;
   align-items: center;
   justify-content: flex-end;
-  background: ${theme.dark1};
+  background: ${theme.dark1.lighten(0.2)};
   cursor: pointer;
 
-  ${Box}:hover & {
+  ${Content}:hover & {
     display: flex;
   }
 `;
 
 const ManageItem = styled.div`
-  padding: 0 10px;
+  padding: 0 3px;
   color: ${theme.accent2};
 
   i {
-    font-size: 18px;
+    font-size: 17px;
     color: ${theme.accent2};
   }
 
@@ -106,18 +113,12 @@ const ManageItem = styled.div`
 `;
 
 export class RoomChatMessage extends React.PureComponent {
-  openProfile() {
-    roomProfileStore.setAndOpen(this.props.message.user);
-  }
-
-  replyMessage = () => {
-    // const { name } = this.props;
-    // this.context.reply({ name, tag: 1337 });
+  openProfile = () => {
+    roomProfileStore.setAndOpen(this.props.user);
   }
 
   deleteMessage = () => {
-    const { id } = this.props.message;
-    removeRoomMessage(id);
+    removeRoomMessage(this.props.id);
   }
 
   render() {
@@ -126,38 +127,30 @@ export class RoomChatMessage extends React.PureComponent {
       user,
       text,
       date,
-    } = this.props.message;
-
+      compact
+    } = this.props;
+    
     return (
       <Box>
-        <Left>
-          <Avatar onClick={() => this.openProfile()}>
+        {!compact && <Header>
+          <Avatar onClick={this.openProfile}>
             {user.site.avatar && <AvatarImg src={user.site.avatar} />}
           </Avatar>
-        </Left>
-        <Right>
-          <Header>
-            <Username>{user.site.name}</Username>
-            <Date>{date}</Date>
-          </Header>
-          <div>
-            <Text>{text}</Text>
-          </div>
-        </Right>
-        <Access name="manageMessage">
-          <ManageMenu>
-            {/* <Access name="replyMessage">
-              <ManageItem onClick={() => this.replyMessage()}>
-                <i className="zmdi zmdi-mail-reply"></i>
-              </ManageItem>
-            </Access> */}
-            <Access name="removeMessage" context={user}>
-              <ManageItem onClick={this.deleteMessage}>
-                <i className="zmdi zmdi-close"></i>
-              </ManageItem>
-            </Access>
-          </ManageMenu>
-        </Access>
+          <Username>{user.site.name}</Username>
+          <Date>{date}</Date>
+        </Header>}
+        <Content>
+          <Text>{text}</Text>
+          <Access name="manageMessage">
+            <ManageMenu>
+              <Access name="removeMessage" context={user}>
+                <ManageItem onClick={this.deleteMessage}>
+                  <i className="zmdi zmdi-close"></i>
+                </ManageItem>
+              </Access>
+            </ManageMenu>
+          </Access>
+        </Content>
       </Box>
     );
   }

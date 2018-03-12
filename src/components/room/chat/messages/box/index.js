@@ -86,7 +86,7 @@ export class MessagesBox extends React.PureComponent {
           onScrollFrame={this.chatScroll}>
           <Welcome>Welcome to the chat!</Welcome>
           {this.props.messages.map(message => 
-            <RoomChatMessage key={message.id} message={message} />
+            <RoomChatMessage key={message.id} {...message} />
           )}
         </Scrollbars>
         {(this.currentTop > 0 && this.currentTop < 0.98 && !fixBottom && messages.length > 0) &&

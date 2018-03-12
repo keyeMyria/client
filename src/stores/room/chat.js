@@ -1,5 +1,6 @@
 import { observable, action, computed } from 'mobx';
 import { wsAPI } from 'utils/wsapi';
+import format from 'date-fns/format';
 
 export class RoomChatStore {
   @observable messages;
@@ -7,7 +8,29 @@ export class RoomChatStore {
 
   @computed
   get messagesList() {
-    return this.messages.slice();
+    return this.compactMessages(this.messages.slice());
+  }
+
+  compactMessages = (messages) => {
+    const compactInterval = 90e3; // 1,5 min
+
+    return messages.map((message, index, array) => {
+      let compact = false;
+      
+      if (index > 0) {
+        if (
+          (message.dateUnix - array[index-1].dateUnix < compactInterval) &&
+          (message.user.site.id === array[index-1].user.site.id)
+        ) {
+          compact = true;
+        }
+      }
+
+      return {
+        ...message,
+        compact
+      };
+    });
   }
 
   constructor() {
@@ -51,6 +74,8 @@ export class RoomChatStore {
   }
 
   addMessage = (message) => {
+    message.dateUnix = +new Date();
+    message.date = format(message.dateUnix, 'H:mm');
     this.messages.replace([...this.messages, message].slice(-100));
   }
 
