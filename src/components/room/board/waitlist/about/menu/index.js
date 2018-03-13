@@ -67,6 +67,12 @@ const MenuItem = styled(DropdownMenuItem)`
   color: ${theme.accent1.lighten(1.5)};
   transition: background .12s ease-in, color .12s ease-in, box-shadow .12s ease-in;
 
+  i {
+    font-size: 16px;
+    min-width: 22px;
+    color: ${theme.accent1.lighten(1)};
+  }
+
   :hover {
     color: ${theme.accent1.lighten(2)};
     background: ${theme.accent1.lighten(0.2)};
@@ -90,10 +96,16 @@ export class RoomWaitlistSettings extends React.Component {
         </MenuButton>
         <MenuContent>
           <Access name="waitlistSkip">
-            <MenuItem onClick={() => waitlistSkip()}>Skip</MenuItem>
+            <MenuItem
+              onClick={() => waitlistSkip()}>
+              <i className="zmdi zmdi-skip-next"></i> Skip
+            </MenuItem>
           </Access>
           <Access name="waitlistKick">
-            <MenuItem onClick={() => waitlistKick(true)}>Kick</MenuItem>
+            <MenuItem
+              onClick={() => waitlistKick(true)}>
+              <i className="zmdi zmdi-close"></i> Kick
+            </MenuItem>
           </Access>
         </MenuContent>
       </Menu>
