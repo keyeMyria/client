@@ -53,7 +53,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   padding-top: 2px;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 500;
   color: ${theme.accent2.darken(0.3)};
   text-overflow: ellipsis;

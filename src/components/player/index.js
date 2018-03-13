@@ -6,7 +6,7 @@ import { theme } from 'colors';
 import { PlayerControl } from './control';
 import { PlayerHtml5Audio } from './html5Audio';
 
-const logo = 'https://pp.userapi.com/c626221/v626221510/7026b/zKYk5tlr530.jpg';
+const logo = 'https://ravepro.ams3.digitaloceanspaces.com/logo.jpg';
 
 const Container = styled.div`
 	background: ${theme.dark1};
