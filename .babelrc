@@ -1,19 +1,23 @@
 {
   "presets": [
     ["env", {
+      "modules": false,
+      "useBuiltIns": true,
       "targets": {
-        "browsers": ["last 2 versions"]
-      },
-      "modules": false
+        "browsers": [
+          "> 1%",
+          "last 2 versions",
+          "Firefox ESR"
+        ]
+      }
     }],
-    "react",
-    "stage-0"
+    "react"
   ],
   "plugins": [
-    "react-hot-loader/babel",
-    "transform-runtime",
     "transform-decorators-legacy",
     "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-export-extensions",
     ["module-resolver", {
       "root": ["./src"]
     }]
