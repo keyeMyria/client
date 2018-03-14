@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import { NavTabs, NavTab, NavTabsContent, NavTabContent } from 'components/ui';
+import { NavTabs, NavTab, NavTabsContent, NavTabContent } from 'uikit';
 
 import { RoomManageGeneral } from './general';
 import { RoomChatManager } from './chat';

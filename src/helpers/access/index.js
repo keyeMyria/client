@@ -43,5 +43,3 @@ Access.defaultProps = {
   name: null,
   invert: false
 };
-
-export default Access;

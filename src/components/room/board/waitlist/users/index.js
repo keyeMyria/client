@@ -3,9 +3,9 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import { ButtonGroup, Button, TextField } from 'components/ui';
+import { ButtonGroup, Button, TextField } from 'uikit';
 import { User, UserAction } from './User';
-import Access from 'components/ui/access';
+import { Access } from 'helpers/access';
 
 const Box = styled.div``;
 

@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 
 import { shortNumbers, humanNumbers } from 'utils';
-import Access from 'components/ui/access';
-import { ButtonGroup, Button } from 'components/ui';
+import { Access } from 'helpers/access';
+import { ButtonGroup, Button } from 'uikit';
 
 import { followRoom } from 'mutations/followRoom';
 import { unfollowRoom } from 'mutations/unfollowRoom';

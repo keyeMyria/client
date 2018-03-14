@@ -6,7 +6,7 @@ import {
   DropdownMenuButton,
   DropdownMenuContent,
   DropdownMenuItem
-} from 'components/ui';
+} from 'uikit';
 import { createRoomMessage } from 'mutations/createRoomMessage';
 import { clearRoomChat } from 'mutations/clearRoomChat';
 

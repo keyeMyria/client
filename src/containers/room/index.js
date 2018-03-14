@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { wsAPI } from 'utils/wsapi';
 import { roomStore, userRoomStore } from 'stores';
 
-import Loading from 'components/ui/loading';
+import { Loading } from 'uikit/loading';
 import { Room } from 'components/room';
 import { RoomBanned } from 'components/room/banned';
 import RoomNotFound from 'components/room/notFound';

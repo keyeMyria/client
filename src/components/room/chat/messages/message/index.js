@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import Access from 'components/ui/access';
+import { Access } from 'helpers/access';
 import { removeRoomMessage } from 'mutations/removeRoomMessage';
 import { roomProfileStore } from 'stores';
 

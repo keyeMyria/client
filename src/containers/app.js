@@ -1,7 +1,7 @@
 import React from 'react';
 import { wsAPI } from 'utils/wsapi';
 import { router, setupRoutes, getRoute } from 'utils/router';
-import Loading from 'components/ui/loading';
+import { Loading } from 'uikit/loading';
 import { App } from 'components/app';
 
 export class RootApp extends React.Component {

@@ -3,8 +3,8 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
-import Access from 'components/ui/access';
-import SWRow from 'components/ui/swrow';
+import { Access } from 'helpers/access';
+import { SWRow } from 'uikit/swrow';
 
 import { changeFollowerMode } from 'mutations/changeFollowerMode';
 import { changeSlowMode } from 'mutations/changeSlowMode';

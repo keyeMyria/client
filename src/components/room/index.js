@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { Modal } from 'components/ui';
-import Access from 'components/ui/access';
+import { Modal } from 'uikit';
+import { Access } from 'helpers/access';
 import { RoomModal } from './modal';
 
 import TopNav from 'components/topNav';

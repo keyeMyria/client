@@ -4,7 +4,7 @@ import { theme } from 'colors';
 import { inject, observer } from 'mobx-react';
 
 import * as NavMenu from 'components/topNav/menu';
-import { Caret } from 'components/ui';
+import { Caret } from 'uikit';
 
 const UserAboutName = styled.div`
 	font-size: 13px;

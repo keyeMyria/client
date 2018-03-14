@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { theme } from 'colors';
 import { uniq } from 'ramda';
 import { checkAccess } from 'utils/access';
-import { Button, Dropdown } from 'components/ui';
+import { Button, Dropdown } from 'uikit';
 import { setRoleUserRoom } from 'mutations/setRoleUserRoom';
 
 @inject('roomSetRoleFormStore', 'userStore', 'userRoomStore')

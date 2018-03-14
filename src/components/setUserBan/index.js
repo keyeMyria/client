@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import { TextField, Button } from 'components/ui';
+import { TextField, Button } from 'uikit';
 import { banUser } from 'mutations/banUser';
 
 const Box = styled.div`

@@ -3,8 +3,8 @@ import { router } from 'utils/router';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
-import { Button } from 'components/ui';
-import Loading from 'components/ui/loading';
+import { Button } from 'uikit';
+import { Loading } from 'uikit/loading';
 
 const ToMainBox = styled.div`
   margin-top: 25px;

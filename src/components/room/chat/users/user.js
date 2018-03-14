@@ -11,7 +11,7 @@ import {
   getRoomRoleTitle,
   getSiteRoleTitle,
 } from 'utils/roles';
-import Access from 'components/ui/access';
+import { Access } from 'helpers/access';
 
 const Box = styled.div`
   display: flex;

@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import { ButtonGroup, Button, TextField } from 'components/ui';
+import { ButtonGroup, Button, TextField } from 'uikit';
 import { Source } from './Source';
 import { injectIntl } from 'utils/intl';
 import { waitlistAddSource } from 'mutations/waitlistAddSource';

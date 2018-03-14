@@ -5,7 +5,7 @@ import { theme } from 'colors';
 import { Line } from 'rc-progress';
 import { uniq } from 'ramda';
 import { checkAccess } from 'utils/access';
-import { Access } from 'components/ui/access';
+import { Access } from 'helpers/access';
 import { RoomChatSettings } from './settings';
 import { createRoomMessage } from 'mutations/createRoomMessage';
 import { roomChatStore } from 'stores';

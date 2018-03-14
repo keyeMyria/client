@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { FormattedMessage } from 'react-intl';
-import { Button, Modal } from 'components/ui';
+import { Button, Modal } from 'uikit';
 import NavButton from 'components/topNav/button';
 import { AuthModal } from './auth';
 import { UserAboutNavMenu } from './menu';

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import Switch from 'components/ui/switch';
+import { Switch } from 'uikit/switch';
 
-const SRow = styled.div`
+const Box = styled.div`
   display: flex;
   width: 100%;
   padding: 10px 0;
@@ -39,8 +39,8 @@ const SRowSwitch = styled.div`
   padding: 10px;
 `;
 
-export default ({ title, description, isActive, onChange }) => (
-  <SRow>
+export const SWRow = ({ title, description, isActive, onChange }) => (
+  <Box>
     <SRowLeft>
       <SRowTitle>{title}</SRowTitle>
       {!!description && <SRowDescription>{description}</SRowDescription>}
@@ -52,5 +52,5 @@ export default ({ title, description, isActive, onChange }) => (
           onChange={() => onChange()} />
       </SRowSwitch>
     </SRowRight>
-  </SRow>
+  </Box>
 );

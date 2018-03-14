@@ -2,9 +2,9 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled, { ThemeProvider } from 'styled-components';
 import { colors, theme } from 'colors';
-import Loading from 'components/ui/loading';
+import { Loading } from 'uikit/loading';
 
-import { Modal } from 'components/ui';
+import { Modal } from 'uikit/modal';
 import { SetUserBan } from 'components/setUserBan';
 import { SetUserRole } from 'components/setUserRole';
 import './styles';

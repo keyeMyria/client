@@ -4,8 +4,8 @@ import { router } from 'utils/router';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
-import Access from 'components/ui/access';
-import { TextField, Button } from 'components/ui';
+import { Access } from 'helpers/access';
+import { TextField, Button } from 'uikit';
 
 import { setRoomTitle } from 'mutations/setRoomTitle';
 import { banRoom } from 'mutations/banRoom';

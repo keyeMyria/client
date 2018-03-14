@@ -9,14 +9,14 @@ import {
   roomSetRoleFormStore
 } from 'stores';
 
-import Access from 'components/ui/access';
+import { Access } from 'helpers/access';
 import {
   DropdownMenu,
   DropdownMenuButton,
   DropdownMenuContent,
   DropdownMenuItem,
   Button
-} from 'components/ui';
+} from 'uikit';
 
 const Box = styled(DropdownMenu)`
   display: flex;

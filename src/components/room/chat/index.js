@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { shortNumbers, humanNumbers } from 'utils';
 
-import { NavTabs, NavTab, NavTabsContent, NavTabContent } from 'components/ui';
+import { NavTabs, NavTab, NavTabsContent, NavTabContent } from 'uikit';
 
 import { ChatMessages } from './messages';
 import { RoomUsersContainer } from 'containers/room/chat/users';

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import { Access } from 'components/ui/access';
+import { Access } from 'helpers/access';
 import {
   DropdownMenu,
   DropdownMenuButton,
   DropdownMenuContent,
   DropdownMenuItem
-} from 'components/ui';
+} from 'uikit';
 import { waitlistSkip } from 'mutations/waitlistSkip';
 import { waitlistKick } from 'mutations/waitlistKick';
 

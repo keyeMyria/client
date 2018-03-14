@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { inject, observer } from 'mobx-react';
 import { FormattedMessage } from 'react-intl';
-import Access from 'components/ui/access';
+import { Access } from 'helpers/access';
 
-import { Button, ButtonwGroup, Modal } from 'components/ui';
+import { Button, ButtonwGroup, Modal } from 'uikit';
 
 import TopNav from 'components/topNav';
 import { CreateRoom } from './createRoom';

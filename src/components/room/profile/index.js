@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 
 import { getRoomRoleTitle, getSiteRoleTitle } from 'utils/roles';
-import { TextField } from 'components/ui';
-import Access from 'components/ui/access';
+import { TextField } from 'uikit';
+import { Access } from 'helpers/access';
 import { RoomProfileMenu } from './menu';
 
 const Box = styled.div`

@@ -3,9 +3,9 @@ import { inject } from 'mobx-react';
 import { router } from 'utils/router';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import Access from 'components/ui/access';
-import { Button } from 'components/ui';
-import Loading from 'components/ui/loading';
+import { Access } from 'helpers/access';
+import { Button } from 'uikit';
+import { Loading } from 'uikit/loading';
 
 import { unbanRoomByName } from 'mutations/unbanRoomByName';
 

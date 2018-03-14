@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { router } from 'utils/router';
-import { Caret } from 'components/ui';
+import { Caret } from 'uikit';
 
 import { TopNavUser } from './user';
 import { Logo } from './logo';

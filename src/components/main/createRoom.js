@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, TextField } from 'components/ui';
+import { Button, TextField } from 'uikit';
 import { createRoom } from 'mutations/createRoom';
 
 const CreateRoomModal = styled.div`
