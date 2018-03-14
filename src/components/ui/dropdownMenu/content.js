@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class extends React.Component {
+export class DropdownMenuContent extends React.Component {
   static contextTypes = {
     isClose: PropTypes.bool
   }

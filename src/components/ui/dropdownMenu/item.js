@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class DropdownMenuItem extends React.Component {
+export class DropdownMenuItem extends React.Component {
   static contextTypes = {
     closeMenu: PropTypes.func
   }

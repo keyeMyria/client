@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
-const TextField = styled.div`
+const Box = styled.div`
 	padding: 5px 0;
 `;
 
@@ -52,7 +52,7 @@ const Input = styled.input`
 	}
 `;
 
-export default class extends React.Component {
+export class TextField extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -125,7 +125,7 @@ export default class extends React.Component {
 										(!this.state.isChanged && this.props.value);
 
 		return (
-			<TextField>
+			<Box>
 				<Label isFocus={isFocus}>{label}</Label>
 				<InputLine>
 					{before && <Before>{before}</Before>}
@@ -140,7 +140,7 @@ export default class extends React.Component {
 							onChange={this.onTextFieldChanged} />
 					</InputBox>
 				</InputLine>
-			</TextField>
+			</Box>
 		);
 	}
 }

@@ -28,7 +28,7 @@ const Slider = styled.div`
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 `;
 
-export default ({ checked, onChange }) => (
+export const Switch = ({ checked, onChange }) => (
   <Box
     isActive={checked}
     onClick={() => onChange()}>

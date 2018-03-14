@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
-const Caret = styled.div`
+const Box = styled.div`
   display: flex;
   align-items: center;
   padding: 0 5px;
@@ -14,8 +14,8 @@ const Caret = styled.div`
   }
 `;
 
-export default () => (
-  <Caret>
+export const Caret = () => (
+  <Box>
     <i className="zmdi zmdi-caret-down"></i>
-  </Caret>
+  </Box>
 );
