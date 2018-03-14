@@ -22,7 +22,6 @@ const Avatar = styled.div`
   width: 50px;
   height: 26px;
   border-radius: 100%;
-  /* background: ${theme.dark2}; */
   cursor: pointer;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   z-index: 20;
