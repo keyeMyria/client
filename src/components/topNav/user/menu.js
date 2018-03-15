@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 import { theme } from 'colors';
 import { inject, observer } from 'mobx-react';
 
@@ -91,7 +92,9 @@ export class UserAboutNavMenu extends React.Component {
 				</NavMenu.Target>
 				<NavMenu.Menu isClose={this.state.isClose}>
 					<NavMenu.Actions>
-						<NavMenu.Action onClick={() => this.logout()}>Logout</NavMenu.Action>
+						<NavMenu.Action onClick={() => this.logout()}>
+							<FormattedMessage id="topNav.auth.logoutButton" />
+						</NavMenu.Action>
 					</NavMenu.Actions>
 				</NavMenu.Menu>
 			</NavMenu.Box>

@@ -2,12 +2,16 @@ import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import ru from 'react-intl/locale-data/ru';
 
+import enLang from './en';
 import ruLang from './ru';
 
 addLocaleData([...en, ...ru]);
 
 const allMessages = {
-  ru: ruLang
+  "en": enLang,
+  "en-US": enLang,
+  "ru-RU": ruLang,
+  "ru": ruLang
 };
 
 export const getMessages = (locale = 'en') => {

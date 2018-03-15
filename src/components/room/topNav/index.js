@@ -157,17 +157,13 @@ export class RoomTopNav extends React.Component {
                 <Button
                   color={theme.accent1.darken(0.12)}
                   onClick={() => unfollowRoom()}>
-                  <FormattedMessage
-                    id="room.topNav.following"
-                    defaultMessage="Following" />
+                  <FormattedMessage id="room.topNav.following"/>
                 </Button>
               :
                 <Button
                   color={theme.accent1.lighten(0.3)}
                   onClick={() => followRoom()}>
-                  <FormattedMessage
-                    id="room.topNav.follow"
-                    defaultMessage="Follow" />
+                  <FormattedMessage id="room.topNav.follow"/>
                 </Button>
               }
               <Button>{humanNumbers(roomStore.followersCount)}</Button>

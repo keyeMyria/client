@@ -1,6 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
+import { injectIntl } from 'utils/intl';
 import { theme } from 'colors';
 import { Line } from 'rc-progress';
 import { uniq } from 'ramda';
@@ -76,6 +77,7 @@ const ChatSendBlock = styled.div`
   font-size: 13px;
 `;
 
+@injectIntl()
 @inject('userStore', 'userRoomStore', 'roomStore')
 @observer
 export class SendMessageForm extends React.Component {
@@ -165,6 +167,8 @@ export class SendMessageForm extends React.Component {
   }
 
   render() {
+    const { formatMessage } = this.props.intl;
+
     return (
       <Box>
         {this.state.slowMode && <SlowModeProgress>
@@ -183,13 +187,13 @@ export class SendMessageForm extends React.Component {
             {this.props.roomStore.followerMode && <Access
               name="sendMessageFollowerModeIgnore" invert>
               <ChatSendBlock>
-                You must be a follower for more than 30 minutes to typing messages.
+                {formatMessage({ id: "room.chat.denyFollowerMode" })}
               </ChatSendBlock>
             </Access>}
             <input
               autoFocus
               onKeyPress={this.handleKeyPress}
-              placeholder="Message.."
+              placeholder={formatMessage({ id: "room.chat.messageInput" })}
               ref={(input) => { this.textInput = input; }} />
           </Access>
           <Access name="sendMessage" invert>

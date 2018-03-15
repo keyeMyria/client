@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, TextField } from 'uikit';
+import { FormattedMessage } from 'react-intl';
+import { injectIntl } from 'utils/intl';
 import { createRoom } from 'mutations/createRoom';
 
 const CreateRoomModal = styled.div`
@@ -13,6 +15,7 @@ const FormBottom = styled.div`
   padding-top: 20px;
 `;
 
+@injectIntl()
 export class CreateRoom extends React.Component {
   constructor(props) {
     super(props);
@@ -28,25 +31,27 @@ export class CreateRoom extends React.Component {
   }
 
   render() {
+    const { formatMessage } = this.props.intl;
+    
     return (
       <CreateRoomModal>
         <TextField
           autoFocus
           name="roomTitle"
-          label="Title"
+          label={formatMessage({ id: "main.createRoom.title" })}
           onBlur={title => this.setState({ title })}
           />
         <TextField
           name="roomName"
           before="rave.pro/"
-          label="URL"
+          label={formatMessage({ id: "main.createRoom.url" })}
           placeholder="roomname"
           onBlur={name => this.setState({ name })}
           />
         <FormBottom>
-          <Button 
-            onClick={() => this.create()}
-            className="CreateRoom__CreateButton">Create</Button>
+          <Button onClick={() => this.create()}>
+            <FormattedMessage id="main.createRoom.create" />
+          </Button>
         </FormBottom>
       </CreateRoomModal>
     );

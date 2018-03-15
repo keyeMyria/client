@@ -2,6 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
+import { FormattedMessage } from 'react-intl';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { RoomChatMessage } from '../message';
 import { roomChatStore } from 'stores';
@@ -84,13 +85,17 @@ export class MessagesBox extends React.PureComponent {
           ref="chatscroll"
           autoHide={true}
           onScrollFrame={this.chatScroll}>
-          <Welcome>Welcome to the chat!</Welcome>
+          <Welcome>
+            <FormattedMessage id="room.chat.welcome" />
+          </Welcome>
           {this.props.messages.map(message => 
             <RoomChatMessage key={message.id} {...message} />
           )}
         </Scrollbars>
         {(this.currentTop > 0 && this.currentTop < 0.98 && !fixBottom && messages.length > 0) &&
-          <ToBottom onClick={this.toBottom}>To New Messages</ToBottom>
+          <ToBottom onClick={this.toBottom}>
+            <FormattedMessage id="room.chat.toNewMessages" />
+          </ToBottom>
         }
       </Box>
     );

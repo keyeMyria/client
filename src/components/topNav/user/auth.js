@@ -44,13 +44,13 @@ export class AuthModal extends React.Component {
 		return (
 			<LoginForm>
 				<LoginButton cColor={theme.google} onClick={() => this.auth('google')}>
-					<FormattedMessage id="topNav.auth.withGoogle" defaultMessage="Login with Google" />
+					<FormattedMessage id="topNav.auth.withGoogle"/>
 				</LoginButton>
 				<LoginButton cColor={theme.vk} onClick={() => this.auth('vkontakte')}>
-					<FormattedMessage id="topNav.auth.withVK" defaultMessage="Login with VK" />
+					<FormattedMessage id="topNav.auth.withVK"/>
 				</LoginButton>
 				<LoginButton cColor={theme.twitch} onClick={() => this.auth('twitch')}>
-					<FormattedMessage id="topNav.auth.withTwitch" defaultMessage="Login with Twitch" />
+					<FormattedMessage id="topNav.auth.withTwitch"/>
 				</LoginButton>
 			</LoginForm>
 		);

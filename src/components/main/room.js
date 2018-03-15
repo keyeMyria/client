@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { router } from 'utils/router';
+import { FormattedMessage } from 'react-intl';
 import { shortNumbers, humanNumbers } from 'utils';
 
 const Box = styled.div`
@@ -89,37 +90,6 @@ const PlayType = styled.div`
   font-size: 12px;
 `;
 
-const MainRoomPlayDataNone = () => (
-  <div className="MainRoomPlayData">
-    Nothing playing
-  </div>
-);
-
-const MainRoomPlayDataPlaylist = ({ source }) => (
-  <div className="MainRoomPlayData">
-    {source ? source.title : 'Ничего не играет'}
-  </div>
-);
-
-const MainRoomPlayDataWaitlist = ({ playing: { source } }) => (
-  <div className="MainRoomPlayData">
-    {source ? source.title : 'Ничего не играет'}
-  </div>
-);
-
-const playDataView = (playData, playType) => {
-  if( !playData ) return <MainRoomPlayDataNone />;
-
-  switch (playType) {
-    case 'playlist':
-      return <MainRoomPlayDataPlaylist {...playData.playlist} />
-    case 'waitlist':
-      return <MainRoomPlayDataWaitlist {...playData.waitlist} />
-    default:
-      return <MainRoomPlayDataNone />;
-  }
-}
-
 const getPlayTypeTitle = playType => {
   switch (playType) {
     case 'playlist':
@@ -162,7 +132,11 @@ export const MainRoom = ({
         <RoomTitle onClick={() => router.navigate(`/${name}`)}>
           {title}
         </RoomTitle>
-        <PlayData>{playDataView(playData, playType)}</PlayData>
+        <PlayData>
+        <div className="MainRoomPlayData">
+          <FormattedMessage id="main.room.playdata.nothing" />
+        </div>
+        </PlayData>
       </div>
     </Data>
 

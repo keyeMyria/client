@@ -36,9 +36,7 @@ export class TopNavUser extends React.Component {
 
   renderGuest() {
     const authModalTitle = (
-      <FormattedMessage
-        id="topNav.auth.modalTitle"
-        defaultMessage="Authorization" />
+      <FormattedMessage id="topNav.auth.modalTitle" />
     );
 
     return (
@@ -47,9 +45,7 @@ export class TopNavUser extends React.Component {
           <Button
             color={theme.accent1.lighten(0.3)}
             onClick={() => this.setState({ authModalIsOpen: true })}>
-            <FormattedMessage
-              id="topNav.auth.loginButton"
-              defaultMessage="Login" />
+            <FormattedMessage id="topNav.auth.loginButton"/>
           </Button>
         </LoginButton>
         <Modal

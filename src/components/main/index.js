@@ -97,9 +97,7 @@ export class Main extends React.Component {
   getNoRooms() {
     return (
       <NoRooms>
-        <FormattedMessage
-          id="main.rooms.notfound"
-          defaultMessage="Rooms not found." />
+        <FormattedMessage id="main.rooms.notfound" />
       </NoRooms>
     );
   }
@@ -125,9 +123,7 @@ export class Main extends React.Component {
   getError() {
     return (
       <LoadingError>
-        <FormattedMessage
-          id="main.rooms.loadingerror"
-          defaultMessage="Loading Error." />
+        <FormattedMessage id="main.rooms.loadingerror" />
       </LoadingError>
     );
   }
@@ -135,9 +131,7 @@ export class Main extends React.Component {
   getLoading() {
     return (
       <Loading>
-        <FormattedMessage
-          id="main.rooms.loading"
-          defaultMessage="Loading..." />
+        <FormattedMessage id="main.rooms.loading" />
       </Loading>
     );
   }
@@ -163,9 +157,7 @@ export class Main extends React.Component {
           <RoomsHeader>
             <RoomsTitleBox>
               <RoomsTitle>
-                <FormattedMessage
-                  id="main.rooms.title"
-                  defaultMessage="Rooms" />
+                <FormattedMessage id="main.rooms.title" />
               </RoomsTitle>
               {/* <RoomsDescription>
                 <FormattedMessage
@@ -177,9 +169,7 @@ export class Main extends React.Component {
               <RoomsCreate>
                 <Button
                   onClick={() => this.openCreateRoom()}>
-                  <FormattedMessage
-                    id="main.rooms.create"
-                    defaultMessage="New Room" />
+                  <FormattedMessage id="main.rooms.create" />
                 </Button>
               </RoomsCreate>
             </Access>
@@ -189,7 +179,7 @@ export class Main extends React.Component {
         
         <Access name="createRoom">
           <Modal
-            title="New Room"
+            title={<FormattedMessage id="main.rooms.create" />}
             isOpen={this.props.mainStore.modal === 'createRoom'}
             onClose={() => this.props.mainStore.modal = ''}>
             <CreateRoom />

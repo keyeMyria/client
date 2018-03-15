@@ -84,17 +84,14 @@ export class WaitlistPlaylist extends React.Component {
 							selectAllOnFocus
 							name="waitlistAddSourceValue"
 							label={formatMessage({
-								id: "room.waitlist.playlist.addInputPlaceholder",
-								defaultMessage: "Paste Youtube or Soundcloud Link"
+								id: "room.waitlist.playlist.addInputPlaceholder"
 							})}
 							onBlur={(sourceValue) => this.setState({ sourceValue })}
 						/>
 					</AddSourceTextField>
 					<AddSourceSendButton>
 						<Button onClick={this.addSource}>
-							<FormattedMessage
-								id="room.waitlist.playlist.addButton"
-								defaultMessage="Add" />
+							<FormattedMessage id="room.waitlist.playlist.addButton"/>
 						</Button>
 					</AddSourceSendButton>
 				</AddSourceBox>
@@ -103,9 +100,7 @@ export class WaitlistPlaylist extends React.Component {
 						{(droppableProvided) => (
 							<SourcesList innerRef={droppableProvided.innerRef}>
 								{userPlaylist.length == 0 && <NoSources>
-									<FormattedMessage
-										id="room.waitlist.playlist.noSources"
-										defaultMessage="Your playlist for the room is empty. Add some source from YouTube or SoundCloud for start playing." />
+									<FormattedMessage id="room.waitlist.playlist.noSources" />
 								</NoSources>}
 								{userPlaylist.map((source, i) => (
 									<Draggable
