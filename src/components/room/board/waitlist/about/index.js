@@ -188,10 +188,3 @@ export class RoomBoardAboutWaitlist extends React.Component {
 		);
 	}
 }
-
-// Start Playing (waitlistAdd) - noPlaying
-// Leave Playing (waitlistKick) - current.isPlaying
-// Leave Waitlist (waitlistRemove) - current.isWait
-
-// 5 - current.isPlaying || current.noWait
-// 5/10 - current.isWait (currentPosition/waitCount)
