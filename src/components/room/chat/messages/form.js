@@ -1,4 +1,5 @@
 import React from 'react';
+import isMobile from 'ismobilejs';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { injectIntl } from 'utils/intl';
@@ -191,7 +192,7 @@ export class SendMessageForm extends React.Component {
               </ChatSendBlock>
             </Access>}
             <input
-              autoFocus
+              autoFocus={!isMobile.any}
               onKeyPress={this.handleKeyPress}
               placeholder={formatMessage({ id: "room.chat.messageInput" })}
               ref={(input) => { this.textInput = input; }} />
