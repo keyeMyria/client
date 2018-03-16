@@ -1,5 +1,5 @@
 # build environment
-FROM node:alpine as builder
+FROM mhart/alpine-node as builder
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
