@@ -18,6 +18,11 @@ export default {
   "topNav.auth.withVK": "Войти через ВКонтакте",
   "topNav.auth.withTwitch": "Войти через Twitch",
 
+  "leftPanel.following.title": "Подписки (Demo)",
+  "leftPanel.following.none": "У вас нет подписок.",
+  "leftPanel.following.room.none": "Ничего не играет",
+
+  "room.topNav.manage": "Управление",
   "room.topNav.following": "Подписан",
   "room.topNav.follow": "Подписаться",
 

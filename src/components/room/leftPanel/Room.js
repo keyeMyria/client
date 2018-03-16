@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
+import { router } from 'utils/router';
 import { shortNumbers, humanNumbers } from 'utils';
 
 const Box = styled.div`
@@ -82,10 +83,11 @@ const Online = styled.div`
 export const LeftPanelRoom = ({
   avatar,
   title,
+  name,
   content,
   online
 }) => (
-  <Box>
+  <Box onClick={() => window.location.href = `/${name}`}>
     <Left>
       <Avatar>
         <AvatarImg src={avatar} />

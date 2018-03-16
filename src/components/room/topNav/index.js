@@ -146,7 +146,9 @@ export class RoomTopNav extends React.Component {
             {/* <MenuItem>Collection</MenuItem>
             <MenuItem>History</MenuItem> */}
             <Access name="manageRoom">
-              <MenuItem onClick={() => this.openRoomManage()}>Manage</MenuItem>
+              <MenuItem onClick={() => this.openRoomManage()}>
+                <FormattedMessage id="room.topNav.manage"/>
+              </MenuItem>
             </Access>
           </Menu>
         </Left>

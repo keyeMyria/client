@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 import { theme } from 'colors';
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -35,22 +36,28 @@ const Empty = styled.div`
 `;
 
 const rooms = [
-  // {
-  //   id: 1,
-  //   avatar: "https://ravepro.ams3.digitaloceanspaces.com/logo.jpg",
-  //   title: "RaveCat",
-  //   content: "The Upbeats - Punks",
-  //   online: 60
-  // }
+  {
+    id: 1,
+    avatar: "https://ravepro.ams3.digitaloceanspaces.com/logo.jpg",
+    name: 'ravecat',
+    title: "RaveCat",
+    content: <FormattedMessage id="leftPanel.following.room.none" />,
+    online: 0
+  }
 ];
 
 export const LeftPanel = () => (
   <Box>
     <Scrollbars autoHide>
       <Section>
-        <Title>Following</Title>
+        <Title>
+          <FormattedMessage id="leftPanel.following.title"/>
+        </Title>
         <Content>
-          {rooms.length === 0 && <Empty>You have no following.</Empty>}
+          {rooms.length === 0 &&
+          <Empty>
+            <FormattedMessage id="leftPanel.following.none"/>
+          </Empty>}
           {rooms.map(room => 
             <LeftPanelRoom key={room.id} {...room} />
           )}

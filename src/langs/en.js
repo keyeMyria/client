@@ -18,6 +18,11 @@ export default {
   "topNav.auth.withVK": "Login with VK",
   "topNav.auth.withTwitch": "Login with Twitch",
 
+  "leftPanel.following.title": "Following (Demo)",
+  "leftPanel.following.none": "You have no following.",
+  "leftPanel.following.room.none": "Nothing playing",
+
+  "room.topNav.manage": "Manage",
   "room.topNav.following": "Following",
   "room.topNav.follow": "Follow",
 
