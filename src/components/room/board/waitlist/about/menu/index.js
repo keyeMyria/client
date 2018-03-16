@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { Access } from 'helpers/access';
@@ -98,13 +99,15 @@ export class RoomWaitlistSettings extends React.Component {
           <Access name="waitlistSkip">
             <MenuItem
               onClick={() => waitlistSkip()}>
-              <i className="zmdi zmdi-skip-next"></i> Skip
+              <i className="zmdi zmdi-skip-next"></i>
+              <FormattedMessage id="room.waitlist.skip"/>
             </MenuItem>
           </Access>
           <Access name="waitlistKick">
             <MenuItem
               onClick={() => waitlistKick(true)}>
-              <i className="zmdi zmdi-close"></i> Kick
+              <i className="zmdi zmdi-close"></i>
+              <FormattedMessage id="room.waitlist.kick"/>
             </MenuItem>
           </Access>
         </MenuContent>

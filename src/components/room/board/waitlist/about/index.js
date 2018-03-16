@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { Access } from 'helpers/access';
@@ -120,7 +121,10 @@ export class RoomBoardAboutWaitlist extends React.Component {
 		// Start Playing (waitlistAdd) - noPlaying
 		let actionView = (
 			<Button onClick={() => this.waitlistAdd()}>
-				{noPlaying ? 'Start Playing' : 'Join Playing'}
+				{noPlaying ? 
+					<FormattedMessage id="room.waitlist.start"/> : 
+					<FormattedMessage id="room.waitlist.join"/>
+				}
 			</Button>
 		);
 
@@ -129,7 +133,7 @@ export class RoomBoardAboutWaitlist extends React.Component {
 				<Button
 					color={theme.accent1.darken(0.15)}
 					onClick={() => waitlistKick()}>
-					{'Leave Playing'}
+					<FormattedMessage id="room.waitlist.leave"/>
 				</Button>
 			);
 		}
@@ -139,7 +143,7 @@ export class RoomBoardAboutWaitlist extends React.Component {
 				<Button
 					color={theme.accent1.darken(0.15)}
 					onClick={() => waitlistRemoveUser(currentUserId)}>
-					{'Leave Waitlist'}
+					<FormattedMessage id="room.waitlist.leaveQueue"/>
 				</Button>
 			);
 
@@ -168,7 +172,7 @@ export class RoomBoardAboutWaitlist extends React.Component {
 					<ActionBox>
 						<Access name="modeWaitlistOpenMyPlaylist">
 							<MyPlaylistButton onClick={() => roomStore.tab = 'waitlistModePlaylist'}>
-								{'My Playlist'}
+								<FormattedMessage id="room.waitlist.playlistButton"/>
 							</MyPlaylistButton>
 						</Access>
 						<ButtonGroup>

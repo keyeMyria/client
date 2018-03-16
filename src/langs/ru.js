@@ -21,6 +21,14 @@ export default {
   "room.topNav.following": "Подписан",
   "room.topNav.follow": "Подписаться",
 
+  "room.waitlist.start": "Начать игру",
+  "room.waitlist.join": "Присоединиться к игре",
+  "room.waitlist.leave": "Покинуть игру",
+  "room.waitlist.leaveQueue": "Покинуть очередь",
+  "room.waitlist.playlistButton": "Мой плейлист",
+  "room.waitlist.skip": "Пропустить",
+  "room.waitlist.kick": "Выгнать",
+  
   "room.waitlist.playlist.addInputPlaceholder": "Вставьте ссылку c YouTube или SoundCloud",
   "room.waitlist.playlist.addButton": "Добавить",
   "room.waitlist.playlist.noSources": "Ваш плейлист для этой комнаты пуст. Добавьте видео с YouTube или трек с SoundCloud чтобы начать играть.",

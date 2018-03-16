@@ -21,6 +21,14 @@ export default {
   "room.topNav.following": "Following",
   "room.topNav.follow": "Follow",
 
+  "room.waitlist.start": "Start Playing",
+  "room.waitlist.join": "Join Playing",
+  "room.waitlist.leave": "Leave Playing",
+  "room.waitlist.leaveQueue": "Leave Waitlist",
+  "room.waitlist.playlistButton": "My playlist",
+  "room.waitlist.skip": "Skip",
+  "room.waitlist.kick": "Kick",
+
   "room.waitlist.playlist.addInputPlaceholder": "Paste Youtube or Soundcloud Link",
   "room.waitlist.playlist.addButton": "Add",
   "room.waitlist.playlist.noSources": "Your playlist for the room is empty. Add some source from YouTube or SoundCloud for start playing.",
