@@ -14,6 +14,10 @@ const allMessages = {
   "ru": ruLang
 };
 
-export const getMessages = (locale = 'en') => {
+export const getMessages = (locale) => {
+  if (!allMessages[locale]) {
+    locale = 'en';
+  }
+
   return allMessages[locale];
 }
