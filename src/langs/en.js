@@ -28,5 +28,6 @@ export default {
   "room.chat.welcome": "Welcome to the chat!",
   "room.chat.toNewMessages": "To new messages",
   "room.chat.messageInput": "Message...",
+  "room.chat.denyLogin": "Login to typing message.",
   "room.chat.denyFollowerMode": "You must be a follower for more than 30 minutes to typing messages."
 }

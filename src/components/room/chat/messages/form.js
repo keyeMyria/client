@@ -199,7 +199,7 @@ export class SendMessageForm extends React.Component {
           </Access>
           <Access name="sendMessage" invert>
             <ChatSendBlock>
-              Login to typing message.
+              {formatMessage({ id: "room.chat.denyLogin" })}
             </ChatSendBlock>
           </Access>
         </Right>
