@@ -11,7 +11,7 @@ const Box = styled.div`
 	display: block;
 	top: 0;
 	left: 0;
-	background: ${theme.dark2};
+	background: ${theme.dark2.fade(0.01)};
 	z-index: 2800;
 `;
 
