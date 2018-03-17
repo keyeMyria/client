@@ -3,19 +3,11 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
-import { PlayerControl } from './control';
 import { PlayerHtml5Audio } from './html5Audio';
 
-const logo = 'https://ravepro.ams3.digitaloceanspaces.com/logo.jpg';
+import { PlayerControlBox, Container } from './controlBox';
 
-const Container = styled.div`
-	background: ${theme.dark1};
-	padding-bottom: 56.25%;
-	position: relative;
-	display: block;
-	height: 0;
-	overflow: hidden;
-`;
+const logo = 'https://ravepro.ams3.digitaloceanspaces.com/logo.jpg';
 
 const None = styled.div`
 	display: block;
@@ -90,14 +82,16 @@ const CoverImg = styled.img`
 	}
 `;
 
-const PlayerControlBox = styled.div`
-	visibility: hidden;
-	transition: all .2s ease;
+@inject('roomModeWaitlistStore')
+@observer
+class SoundcloudCover extends React.Component {
+	render() {
+		const { source } = this.props.roomModeWaitlistStore.playData;
+		const cover = (source && source.cover) || logo;
 
-	${Container}:hover & {
-		visibility: visible;
+		return <CoverImg src={cover} />
 	}
-`;
+}
 
 @inject('roomStore')
 @observer
@@ -118,26 +112,22 @@ export class PlayerNone extends React.Component {
 	}
 }
 
-export const PlayerVideo = ({ children, start, duration }) => (
+export const PlayerVideo = ({ children }) => (
 	<Container>
 		<Video>{children}</Video>
-		<PlayerControlBox>
-			<PlayerControl start={start} duration={duration} />
-		</PlayerControlBox>
+		<PlayerControlBox />
 	</Container>
 );
 
-export const PlayerAudio = ({ children, start, duration, cover }) => (
+export const PlayerAudio = ({ children, cover }) => (
 	<Container>
 		<Audio>
 			<Background />
 			<Cover>
-				<CoverImg src={cover} />
+				<SoundcloudCover />
 			</Cover>
 			{children}
 		</Audio>
-		<PlayerControlBox>
-			<PlayerControl start={start} duration={duration} />
-		</PlayerControlBox>
+		<PlayerControlBox />
 	</Container>
 );

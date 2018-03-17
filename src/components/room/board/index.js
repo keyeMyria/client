@@ -34,8 +34,6 @@ const RoomBoardNone = () => (
 export class RoomBoard extends React.Component {
   getContent = (mode) => {
     switch (mode) {
-      // case 'playlist':
-      //   return <RoomPlaylistContainer />
       case 'waitlist':
         return <RoomWaitlistContainer />
       default:

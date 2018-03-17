@@ -1,5 +1,4 @@
 import React from 'react';
-import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 
@@ -20,16 +19,12 @@ const BoardAbout = styled.div`
 	margin: 16px 0;
 `;
 
-@inject('roomModeWaitlistStore')
-@observer
 export class RoomBoardWaitlist extends React.Component {
 	render() {
-		const { playData } = this.props.roomModeWaitlistStore;
-
 		return (
 			<Box>
 				<BoardPlayer>
-					<WaitlistPlayer playing={playData} />
+					<WaitlistPlayer />
 				</BoardPlayer>
 				<BoardAbout>
 					<RoomBoardAboutWaitlist />

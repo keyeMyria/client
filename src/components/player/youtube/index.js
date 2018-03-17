@@ -31,7 +31,7 @@ export class PlayerYoutube extends React.Component {
 		}
 
 		if (this.props.videoId != videoId) {
-			this.forceUpdate();
+			this.loadVideoById(videoId);
 		}
 	}
 
@@ -91,6 +91,7 @@ export class PlayerYoutube extends React.Component {
 	}
 
 	render() {
+		console.log('yt render');
 		const { videoId } = this.props;
 
 		if (!videoId) {

@@ -7,20 +7,20 @@ export class RoomModeWaitlistStore {
   @observable users;
   @observable playData;
 
-  setPlayData(playData) {
-    this.playData = {
-      source: null,
-      user: null,
-      start: 0,
-      serverTime: 0,
-      clientStart: 0
-    };
-    
+  setPlayData(playData) {  
     if (playData) {
       this.playData = {
         ...playData,
         clientStart: getClientStartTime(playData.serverTime, playData.start)
       }; 
+    } else {
+      this.playData = {
+        source: null,
+        user: null,
+        start: 0,
+        serverTime: 0,
+        clientStart: 0
+      };
     }
   }
 

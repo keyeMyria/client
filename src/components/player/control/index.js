@@ -51,6 +51,10 @@ export class PlayerControl extends React.Component {
 
 		const { start, duration } = this.props;
 
+		if (duration === 0) {
+			return;
+		}
+
 		const getCorr = (c, d) => {
 			const m = '00:00:00';
 			const dl = d.length;
@@ -84,7 +88,7 @@ export class PlayerControl extends React.Component {
 	}
 
 	render() {
-		const isNeedTime = !!this.props.start;
+		const isNeedTime = this.props.duration > 0;
 		const progressPart = isNeedTime ? this.state.progressPart : 0;
 
 		return (
