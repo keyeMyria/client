@@ -8,6 +8,7 @@ export class RoomPlayerSoundcloud extends React.Component {
   constructor(props) {
     super(props);
     
+    this.warmup = false;
     this.player = null;
 		this.trackId = null;
 		this.disposers = [];
@@ -86,6 +87,7 @@ export class RoomPlayerSoundcloud extends React.Component {
   }
 
   setSource(trackId) {
+    this.warmup = true;
     const sourceUrl = roomPlayerStore.makeSoundCloudURL(trackId);
     this.player.src = sourceUrl;
 
@@ -101,9 +103,15 @@ export class RoomPlayerSoundcloud extends React.Component {
     const { volume, mute } = roomPlayerStore;
     
     this.player = new Audio();
-    this.src = 'https://raw.githubusercontent.com/anars/blank-audio/master/5-seconds-of-silence.mp3';
-    this.player.load();
-    this.player.play();
+    
+    setTimeout(() => {
+      if (!this.warmup) {
+        this.src = 'https://ravepro.ams3.digitaloceanspaces.com/warmup.mp3';
+        this.player.load();
+        this.play(0);
+        this.warmup = true;
+      }
+    }, 200);
 
     if (this.trackId) {
       this.setSource(this.trackId);
