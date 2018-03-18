@@ -44,7 +44,7 @@ const Header = styled.div`
 
 const Username = styled.div`
   font-weight: 500;
-  color: ${({ color }) => color ? color : theme.accent2.lighten(0.4)};
+  color: ${({ ucolor }) => ucolor ? ucolor : theme.accent2.lighten(0.4)};
   flex: 1;
 `;
 
@@ -124,14 +124,14 @@ export class RoomChatMessage extends React.PureComponent {
       compact
     } = this.props;
 
-    let color = null;
+    let ucolor = null;
 
     if (['owner', 'manager', 'mod'].includes(user.room.role)) {
-      color = theme.roomStaff;
+      ucolor = theme.roomStaff;
     }
 
     if (['founder', 'admin'].includes(user.site.role)) {
-      color = theme.siteStaff;
+      ucolor = theme.siteStaff;
     }
 
     return (
@@ -140,7 +140,7 @@ export class RoomChatMessage extends React.PureComponent {
           <Avatar onClick={this.openProfile}>
             {user.site.avatar && <AvatarImg src={user.site.avatar} />}
           </Avatar>
-          <Username color={color}>{user.site.name}</Username>
+          <Username ucolor={ucolor}>{user.site.name}</Username>
           <Date>{date}</Date>
         </Header>}
         <Content>
