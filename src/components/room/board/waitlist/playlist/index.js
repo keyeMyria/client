@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import { theme } from 'colors';
-import { ButtonGroup, Button, TextField } from 'uikit';
+import { ButtonGroup, Button, TextField, Switch } from 'uikit';
 import { Source } from './Source';
 import { injectIntl } from 'utils/intl';
 import { waitlistAddSource } from 'mutations/waitlistAddSource';
@@ -46,6 +46,22 @@ const NoSources = styled.div`
 	text-align: center;
 `;
 
+const Options = styled.div`
+	padding: 10px 0;
+`;
+
+const UseTimeCode = styled.div`
+	display: flex;
+	align-items: center;
+	padding: 5px;
+`;
+
+const UseTimeCodeTitle = styled.div`
+	font-size: 13px;
+	color: ${theme.accent2};
+	padding: 0 10px;
+`;
+
 @injectIntl()
 @inject('roomModeWaitlistStore')
 @observer
@@ -54,7 +70,8 @@ export class WaitlistPlaylist extends React.Component {
 		super(props);
 
 		this.state = {
-			sourceValue: ''
+			sourceValue: '',
+			useTimecode: false
 		};
 	}
 
@@ -68,7 +85,11 @@ export class WaitlistPlaylist extends React.Component {
 
 	addSource = (link = this.state.sourceValue) => {
 		this.setState({ sourceValue: link });
-		waitlistAddSource(link);
+		waitlistAddSource(link, this.state.useTimecode);
+	}
+
+	changeUseTimecode = () => {
+		this.setState({ useTimecode: !this.state.useTimecode });
 	}
 
 	render() {
@@ -96,6 +117,16 @@ export class WaitlistPlaylist extends React.Component {
 						</Button>
 					</AddSourceSendButton>
 				</AddSourceBox>
+				<Options>
+					<UseTimeCode>
+						<Switch
+							checked={this.state.useTimecode}
+							onChange={this.changeUseTimecode} />
+						<UseTimeCodeTitle>
+							<FormattedMessage id="room.waitlist.playlist.useTimecode" />
+						</UseTimeCodeTitle>
+					</UseTimeCode>
+				</Options>
 				<DragDropContext onDragEnd={this.onDragEnd}>
 					<Droppable droppableId="droppable">
 						{(droppableProvided) => (

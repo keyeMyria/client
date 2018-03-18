@@ -36,6 +36,7 @@ export default {
 
   "room.waitlist.playlist.addInputPlaceholder": "Paste Youtube or Soundcloud Link",
   "room.waitlist.playlist.addButton": "Add",
+  "room.waitlist.playlist.useTimecode": "Use timecode",
   "room.waitlist.playlist.noSources": "Your playlist for the room is empty. Add some source from YouTube or SoundCloud for start playing.",
 
   "room.chat.welcome": "Welcome to the chat!",

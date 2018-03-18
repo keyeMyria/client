@@ -36,6 +36,7 @@ export default {
   
   "room.waitlist.playlist.addInputPlaceholder": "Вставьте ссылку c YouTube или SoundCloud",
   "room.waitlist.playlist.addButton": "Добавить",
+  "room.waitlist.playlist.useTimecode": "Использовать привязку ко времени",
   "room.waitlist.playlist.noSources": "Ваш плейлист для этой комнаты пуст. Добавьте видео с YouTube или трек с SoundCloud чтобы начать играть.",
 
   "room.chat.welcome": "Добро пожаловать в чат!",
