@@ -101,21 +101,10 @@ export class RoomPlayerYoutube extends React.Component {
 		const { volume, mute } = roomPlayerStore;
 		this.player = e.target;
 		
-		setTimeout(() => {
-			if (!this.warmup) {
-				this.player.loadVideoById('vhqnIWyNV6c');
-				
-				setTimeout(() => {
-					if (!this.warmup) {
-						this.player.pauseVideo();
-						
-						setTimeout(() => {
-							this.warmup = true;
-						}, 500);
-					}
-				}, 4000);
-			}
-		}, 1000);
+		if (!this.warmup) {
+			this.player.loadVideoById('g8K21P8CoeI');
+			this.warmup = true;
+		}
 		
     this.setVolume(volume);
     this.mute(mute);

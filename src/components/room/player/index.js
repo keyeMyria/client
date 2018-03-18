@@ -2,12 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { theme } from 'colors';
-
-import { PlayerHtml5Audio } from './html5Audio';
-
 import { PlayerControlBox, Container } from './controlBox';
-
-const logo = 'https://ravepro.ams3.digitaloceanspaces.com/logo.jpg';
 
 const None = styled.div`
 	display: block;
@@ -82,12 +77,12 @@ const CoverImg = styled.img`
 	}
 `;
 
-@inject('roomModeWaitlistStore')
+@inject('roomStore', 'roomModeWaitlistStore')
 @observer
 class SoundcloudCover extends React.Component {
 	render() {
 		const { source } = this.props.roomModeWaitlistStore.playData;
-		const cover = (source && source.cover) || logo;
+		const cover = (source && source.cover) || this.props.roomStore.avatar;
 
 		return <CoverImg src={cover} />
 	}
@@ -97,14 +92,12 @@ class SoundcloudCover extends React.Component {
 @observer
 export class PlayerNone extends React.Component {
 	render() {
-		const { cover, roomStore } = this.props;
-
 		return (
 			<Container>
 				<None>
 					<Background />
 					<Cover>
-						<CoverImg src={cover || roomStore.avatar} />
+						<CoverImg src={this.props.roomStore.avatar} />
 					</Cover>
 				</None>
 			</Container>
@@ -119,7 +112,7 @@ export const PlayerVideo = ({ children }) => (
 	</Container>
 );
 
-export const PlayerAudio = ({ children, cover }) => (
+export const PlayerAudio = ({ children }) => (
 	<Container>
 		<Audio>
 			<Background />

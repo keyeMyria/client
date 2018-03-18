@@ -101,6 +101,8 @@ export class RoomPlayerSoundcloud extends React.Component {
     const { volume, mute } = roomPlayerStore;
     
     this.player = new Audio();
+    this.src = 'https://raw.githubusercontent.com/anars/blank-audio/master/5-seconds-of-silence.mp3';
+    this.player.load();
     this.player.play();
 
     if (this.trackId) {

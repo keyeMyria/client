@@ -1,7 +1,7 @@
 import React from 'react';
 import { reaction } from 'mobx';
 import { roomModeWaitlistStore } from 'stores';
-import { PlayerVideo, PlayerAudio, PlayerNone } from 'components/player';
+import { PlayerVideo, PlayerAudio, PlayerNone } from 'components/room/player';
 import { RoomPlayerYoutube } from 'components/room/player/youtube';
 import { RoomPlayerSoundcloud } from 'components/room/player/soundcloud';
 
