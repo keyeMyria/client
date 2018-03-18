@@ -57,8 +57,8 @@ export class RoomModeWaitlistStore {
     };
   }
 
-  addSource = (source) => {
-    this.userPlaylist.push(source);
+  addSource = (sourceData) => {
+    this.userPlaylist.push(sourceData);
   }
 
   moveSource = (lastPos, newPos) => {
@@ -66,7 +66,9 @@ export class RoomModeWaitlistStore {
   }
 
   removeSource = (id) => {
-    this.userPlaylist = this.userPlaylist.filter(user => user.id != id);
+    this.userPlaylist = this.userPlaylist.filter(sData => {
+      return sData ? sData.source.id != id : true;
+    });
   }
 
   addUser = (user) => {

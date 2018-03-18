@@ -66,8 +66,8 @@ export class WaitlistPlaylist extends React.Component {
 		waitlistMoveSource(result.source.index, result.destination.index);
 	};
 
-	addSource = () => {
-		const link = this.state.sourceValue;
+	addSource = (link = this.state.sourceValue) => {
+		this.setState({ sourceValue: link });
 		waitlistAddSource(link);
 	}
 
@@ -87,6 +87,7 @@ export class WaitlistPlaylist extends React.Component {
 								id: "room.waitlist.playlist.addInputPlaceholder"
 							})}
 							onBlur={(sourceValue) => this.setState({ sourceValue })}
+							onPressEnter={(sourceValue) => this.addSource(sourceValue)}
 						/>
 					</AddSourceTextField>
 					<AddSourceSendButton>
@@ -102,7 +103,7 @@ export class WaitlistPlaylist extends React.Component {
 								{userPlaylist.length == 0 && <NoSources>
 									<FormattedMessage id="room.waitlist.playlist.noSources" />
 								</NoSources>}
-								{userPlaylist.map((source, i) => (
+								{userPlaylist.map(({ source }, i) => (
 									<Draggable
 										key={source.id}
 										index={i}

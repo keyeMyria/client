@@ -8,12 +8,14 @@ export const getWaitlist = async () => {
       query getWaitlist($roomId: Int!) {
         getWaitlist(roomId: $roomId) {
           userPlaylist {
-            id
-            title
-            cover
-            service
-            duration
-            serviceId
+            source {
+              id
+              title
+              cover
+              service
+              duration
+              serviceId 
+            }
           }
           users {
             id
@@ -33,6 +35,7 @@ export const getWaitlist = async () => {
               name
             }
             start
+            sourceStart
             serverTime
           }
         }
