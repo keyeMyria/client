@@ -113,7 +113,7 @@ export class TextField extends React.Component {
 
 	handlePressKey(e) {
     if (e.key === 'Enter') {
-      this.props.onPressEnter();
+      this.props.onPressEnter(e.currentTarget.value);
     }
   }
 
