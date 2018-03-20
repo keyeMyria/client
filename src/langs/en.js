@@ -18,13 +18,26 @@ export default {
   "topNav.auth.withVK": "Login with VK",
   "topNav.auth.withTwitch": "Login with Twitch",
 
-  "leftPanel.following.title": "Following (Demo)",
+  "leftPanel.following.title": "Following",
   "leftPanel.following.none": "You have no following.",
   "leftPanel.following.room.none": "Nothing playing",
 
-  "room.topNav.manage": "Manage",
+  "room.modal.collection": "Room Collection",
+  "room.modal.manage": "Room Settings",
+  "room.modal.waitlistPlaylist": "My Playlist For Room",
+  "room.modal.waitlistUsers": "Waitlist",
+  "room.modal.profile": "Profile",
+  "room.modal.setRole": "Set Role In Room",
+  "room.modal.setBan": "Set Ban In Room",
+
+  "room.topNav.manage": "Settings",
+  "room.topNav.collection": "Collection",
   "room.topNav.following": "Following",
   "room.topNav.follow": "Follow",
+
+  "room.collection.empty": "The Collection is empty.",
+  "room.collection.searchInput": "Search by collection",
+  "room.collection.addSourceButton": "Add Source",
 
   "room.waitlist.start": "Start Playing",
   "room.waitlist.join": "Join Playing",
@@ -33,6 +46,9 @@ export default {
   "room.waitlist.playlistButton": "My playlist",
   "room.waitlist.skip": "Skip",
   "room.waitlist.kick": "Kick",
+
+  "room.waitlist.users.clear": "Kick All", 
+  "room.waitlist.users.empty": "Waitlist is empty.", 
 
   "room.waitlist.playlist.addInputPlaceholder": "Paste Youtube or Soundcloud Link",
   "room.waitlist.playlist.addButton": "Add",

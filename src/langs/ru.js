@@ -18,13 +18,26 @@ export default {
   "topNav.auth.withVK": "Войти через ВКонтакте",
   "topNav.auth.withTwitch": "Войти через Twitch",
 
-  "leftPanel.following.title": "Подписки (Demo)",
+  "leftPanel.following.title": "Подписки",
   "leftPanel.following.none": "У вас нет подписок.",
   "leftPanel.following.room.none": "Ничего не играет",
 
-  "room.topNav.manage": "Управление",
+  "room.modal.collection": "Коллекция комнаты",
+  "room.modal.manage": "Настройки комнаты",
+  "room.modal.waitlistPlaylist": "Мой плейлист для комнаты",
+  "room.modal.waitlistUsers": "Список ожидания",
+  "room.modal.profile": "Профиль",
+  "room.modal.setRole": "Установка роли в комнате",
+  "room.modal.setBan": "Бан пользователя в комнате",
+
+  "room.topNav.manage": "Настройки",
+  "room.topNav.collection": "Коллекция",
   "room.topNav.following": "Подписан",
   "room.topNav.follow": "Подписаться",
+
+  "room.collection.empty": "Коллекция этой комнаты пуста.",
+  "room.collection.searchInput": "Поиск по коллекции",
+  "room.collection.addSourceButton": "Добавить",
 
   "room.waitlist.start": "Начать игру",
   "room.waitlist.join": "Присоединиться к игре",
@@ -33,6 +46,9 @@ export default {
   "room.waitlist.playlistButton": "Мой плейлист",
   "room.waitlist.skip": "Пропустить",
   "room.waitlist.kick": "Выгнать",
+
+  "room.waitlist.users.clear": "Выгнать всех",
+  "room.waitlist.users.empty": "Никого нет в списке ожидания.",
   
   "room.waitlist.playlist.addInputPlaceholder": "Вставьте ссылку c YouTube или SoundCloud",
   "room.waitlist.playlist.addButton": "Добавить",
