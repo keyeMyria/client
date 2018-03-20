@@ -12,7 +12,7 @@ const Box = styled.div`
 	top: 0;
 	left: 0;
 	background: ${theme.dark2.fade(0.01)};
-	z-index: 2800;
+	z-index: 100;
 `;
 
 const Header = styled.div`
