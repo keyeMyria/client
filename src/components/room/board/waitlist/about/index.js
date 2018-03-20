@@ -9,6 +9,7 @@ import { RoomWaitlistSettings } from './menu';
 import { waitlistAdd } from 'mutations/waitlistAdd';
 import { waitlistRemoveUser } from 'mutations/waitlistRemoveUser';
 import { waitlistKick } from 'mutations/waitlistKick';
+import { humanNumbers } from 'utils';
 
 const Box = styled.div`
 	display: flex;
@@ -85,6 +86,17 @@ const MyPlaylistButton = styled(ActionButton)`
   margin-right: 10px;
 `;
 
+const PlaylistCount = styled.div`
+  margin-left: 10px;
+  font-size: 10.5px;
+  color: ${theme.accent2.lighten(0.4)};
+  display: flex;
+  align-items: center;
+  background: ${theme.dark2.lighten(0.3)};
+  padding: 5px;
+  border-radius: 5px;
+`;
+
 const FocusNumber = styled.span``;
 
 const HideNumber = styled.span`
@@ -117,6 +129,8 @@ export class RoomBoardAboutWaitlist extends React.Component {
 		const currentIsWait = currentWaitPosition >= 0;
 
 		let usersCountView = users.length;
+
+		const playlistCount = this.props.roomModeWaitlistStore.userPlaylist.slice().length;
 
 		// Start Playing (waitlistAdd) - noPlaying
 		let actionView = (
@@ -173,6 +187,7 @@ export class RoomBoardAboutWaitlist extends React.Component {
 						<Access name="modeWaitlistOpenMyPlaylist">
 							<MyPlaylistButton onClick={() => roomStore.tab = 'waitlistModePlaylist'}>
 								<FormattedMessage id="room.waitlist.playlistButton"/>
+								<PlaylistCount>{humanNumbers(playlistCount)}</PlaylistCount>
 							</MyPlaylistButton>
 						</Access>
 						<ButtonGroup>
