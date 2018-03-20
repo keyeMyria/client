@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'colors';
 import { router } from 'utils/router';
+import { FormattedMessage } from 'react-intl';
 import { shortNumbers, humanNumbers } from 'utils';
 
 const Box = styled.div`
@@ -81,24 +82,29 @@ const Online = styled.div`
 `;
 
 export const LeftPanelRoom = ({
+  name,
+  usersCount,
+  guestsCount,
   avatar,
   title,
-  name,
-  content,
-  online
+  contentTitle
 }) => (
   <Box onClick={() => window.location.href = `/${name}`}>
     <Left>
       <Avatar>
-        <AvatarImg src={avatar} />
+        <AvatarImg src={avatar || 'https://ravepro.ams3.digitaloceanspaces.com/logo.jpg'} />
       </Avatar>
     </Left>
     <Middle>
       <Title title={title}>{title}</Title>
-      <Content title={content}>{content}</Content>
+      <Content title={contentTitle}>
+        {contentTitle ? contentTitle : <FormattedMessage id="main.room.playdata.nothing" />}
+      </Content>
     </Middle>
     <Right>
-      <Online title={humanNumbers(online)}>{shortNumbers(online)}</Online>
+      {/* <Online title={humanNumbers(usersCount + guestsCount)}>
+        {shortNumbers(usersCount + guestsCount)}
+      </Online> */}
     </Right>
   </Box>
 );

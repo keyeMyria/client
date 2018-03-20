@@ -4,7 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import { theme } from 'colors';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { LeftPanelRoom } from './Room';
+import { FollowRoomsContainer } from 'containers/follow/rooms';
+
 import { LeftPanelFriend } from './Freind';
 
 const Box = styled.div`
@@ -35,17 +36,6 @@ const Empty = styled.div`
   text-align: center;
 `;
 
-const rooms = [
-  {
-    id: 1,
-    avatar: "https://ravepro.ams3.digitaloceanspaces.com/logo.jpg",
-    name: 'ravecat',
-    title: "RaveCat",
-    content: <FormattedMessage id="leftPanel.following.room.none" />,
-    online: 0
-  }
-];
-
 export const LeftPanel = () => (
   <Box>
     <Scrollbars autoHide>
@@ -54,13 +44,7 @@ export const LeftPanel = () => (
           <FormattedMessage id="leftPanel.following.title"/>
         </Title>
         <Content>
-          {rooms.length === 0 &&
-          <Empty>
-            <FormattedMessage id="leftPanel.following.none"/>
-          </Empty>}
-          {rooms.map(room => 
-            <LeftPanelRoom key={room.id} {...room} />
-          )}
+          <FollowRoomsContainer />
         </Content>
       </Section>
       {/* <Section>
