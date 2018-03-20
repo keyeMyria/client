@@ -6,6 +6,8 @@ import { NavTabs, NavTab, NavTabsContent, NavTabContent } from 'uikit';
 import { RoomManageGeneral } from './general';
 import { RoomChatManager } from './chat';
 import { RoomBansContainer } from 'containers/room/manage/bans';
+import { RoomManageWaitlist } from './waitlist';
+import { RoomManageCollection } from './collection';
 
 const Box = styled.div`
 	
@@ -68,6 +70,14 @@ export default class extends React.Component {
               name="bans"
               title="Bans"
               isActive={this.state.tabActive == "bans"}/>
+            <Tab
+              name="collection"
+              title="Collection"
+              isActive={this.state.tabActive == "collection"}/>
+            <Tab
+              name="waitlist"
+              title="Waitlist"
+              isActive={this.state.tabActive == "waitlist"}/>
           </Tabs>
         </Nav>
         <Content>
@@ -80,6 +90,12 @@ export default class extends React.Component {
             </NavTabContent>
             <NavTabContent name="bans">
               <RoomBansContainer />
+            </NavTabContent>
+            <NavTabContent name="collection">
+              <RoomManageCollection />
+            </NavTabContent>
+            <NavTabContent name="waitlist">
+              <RoomManageWaitlist />
             </NavTabContent>
           </NavTabsContent>
         </Content>
