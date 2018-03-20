@@ -107,9 +107,7 @@ export const MainRoom = ({
   guestsCount,
   avatar,
   title,
-  playData,
-  genre,
-  playType,
+  contentTitle
 }) => (
   <Box>
     <Stats>
@@ -134,7 +132,7 @@ export const MainRoom = ({
         </RoomTitle>
         <PlayData>
         <div className="MainRoomPlayData">
-          <FormattedMessage id="main.room.playdata.nothing" />
+          {contentTitle ? contentTitle : <FormattedMessage id="main.room.playdata.nothing" />}
         </div>
         </PlayData>
       </div>

@@ -13,6 +13,7 @@ export const getRooms = async () => {
           avatar
           usersCount
           guestsCount
+          contentTitle
         }
       }
     `   
