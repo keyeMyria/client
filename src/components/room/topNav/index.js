@@ -86,6 +86,17 @@ const MenuItem = styled.button`
   }
 `;
 
+const MenuItemCount = styled.div`
+  margin-left: 10px;
+  font-size: 10.5px;
+  color: ${theme.accent2.lighten(0.4)};
+  display: flex;
+  align-items: center;
+  background: ${theme.dark2.lighten(0.3)};
+  padding: 5px;
+  border-radius: 5px;
+`;
+
 const Right = styled.div`
   display: flex;
   margin-left: auto;
@@ -126,8 +137,8 @@ const FollowBox = styled.div``;
 @inject('roomStore', 'userStore', 'userRoomStore')
 @observer
 export class RoomTopNav extends React.Component {
-  openRoomManage() {
-    this.props.roomStore.tab = 'manage';
+  openRoomModal(name) {
+    this.props.roomStore.tab = name;
   }
 
   render() {
@@ -143,10 +154,15 @@ export class RoomTopNav extends React.Component {
             <RoomTitle>{roomStore.title}</RoomTitle>
           </RoomInfoBox>
           <Menu>
-            {/* <MenuItem>Collection</MenuItem>
-            <MenuItem>History</MenuItem> */}
+            <MenuItem onClick={() => this.openRoomModal('collection')}>
+              <FormattedMessage id="room.topNav.collection"/>
+              <MenuItemCount>
+                {humanNumbers(roomStore.collectionCount)}
+              </MenuItemCount>
+            </MenuItem>
+            {/* <MenuItem>История</MenuItem> */}
             <Access name="manageRoom">
-              <MenuItem onClick={() => this.openRoomManage()}>
+              <MenuItem onClick={() => this.openRoomModal('manage')}>
                 <FormattedMessage id="room.topNav.manage"/>
               </MenuItem>
             </Access>

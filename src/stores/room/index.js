@@ -11,6 +11,7 @@ export class RoomStore {
   @observable followerMode;
   @observable slowMode;
   @observable mode;
+  @observable collectionCount;
   @observable connectionsCount;
   @observable usersCount;
   @observable guestsCount;
@@ -52,6 +53,7 @@ export class RoomStore {
     this.followerMode = false;
     this.slowMode = false;
     this.mode = null;
+    this.collectionCount = 0;
     this.connectionsCount = 0;
     this.usersCount = 0;
     this.guestsCount = 0;

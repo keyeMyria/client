@@ -16,6 +16,7 @@ export const getRoomByName = async (roomName) => {
           followerMode
           slowMode
           followersCount
+          collectionCount
           connectionsCount
           usersCount
           guestsCount
@@ -50,6 +51,7 @@ export const getRoomByName = async (roomName) => {
   roomStore.followerMode = getRoomByName.followerMode;
   roomStore.slowMode = getRoomByName.slowMode;
   roomStore.followersCount = getRoomByName.followersCount;
+  roomStore.collectionCount = getRoomByName.collectionCount;
   roomStore.connectionsCount = getRoomByName.connectionsCount;
   roomStore.usersCount = getRoomByName.usersCount;
   roomStore.guestsCount = getRoomByName.guestsCount;
