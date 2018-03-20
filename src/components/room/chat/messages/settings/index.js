@@ -40,6 +40,7 @@ const MenuContent = styled(DropdownMenuContent)`
   bottom: 60px;
   left: 5px;
   position: absolute;
+  z-index: 22;
 
   :before {
     position: absolute;
