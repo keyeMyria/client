@@ -1,4 +1,12 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
+import { router } from 'utils/router';
+import styled from 'styled-components';
+import { theme } from 'colors';
+
+const Box = styled.div`
+  
+`;
 
 export class RoomManageWaitlist extends React.Component {
 	constructor(props) {
@@ -7,9 +15,9 @@ export class RoomManageWaitlist extends React.Component {
 
   render() {
   	return (
-  		<div className="RoomManageWaitlist">
-        Waitlist
-  		</div>
+  		<Box>
+        
+  		</Box>
   	);
   }
 }
