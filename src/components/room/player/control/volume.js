@@ -37,7 +37,7 @@ export class VolumeControl extends React.Component {
 
   setVolume(e) {
     const volume = parseInt(e.target.value, 10);
-    this.props.roomPlayerStore.volume = volume;
+    this.props.roomPlayerStore.setVolume(volume);
   }
 
   render() {
