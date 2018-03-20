@@ -33,6 +33,7 @@ export class RoomModeWaitlistStore {
     });
     wsAPI.on('waitlistRemoveSource', this.removeSource);
 
+    wsAPI.on('waitlistClear', this.clear);
     wsAPI.on('waitlistAddUser', this.addUser);
     wsAPI.on('waitlistMoveUser', ({ lastPos, newPos }) => {
       this.moveSource(lastPos, newPos); 
@@ -81,6 +82,10 @@ export class RoomModeWaitlistStore {
 
   removeUser = (id) => {
     this.users = this.users.filter(user => user.id != id);
+  }
+
+  clear = () => {
+    this.users = [];
   }
 }
 

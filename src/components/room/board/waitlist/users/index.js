@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
@@ -6,12 +7,25 @@ import { theme } from 'colors';
 import { ButtonGroup, Button, TextField } from 'uikit';
 import { User, UserAction } from './User';
 import { Access } from 'helpers/access';
+import { waitlistClear } from 'mutations/waitlistClear';
+import { waitlistMoveUser } from 'mutations/waitlistMoveUser';
+import { waitlistRemoveUser } from 'mutations/waitlistRemoveUser';
 
 const Box = styled.div``;
 
-const UsersList = styled.div`padding: 10px 5px;`;
+const TopPanel = styled.div`
+	padding: 10px 5px;
+	display: flex;
+	justify-content: flex-end;
+`;
 
-const UserBox = styled.div`user-select: none;`;
+const UsersList = styled.div`
+	padding: 10px 5px;
+`;
+
+const UserBox = styled.div`
+	user-select: none;
+`;
 
 const UserBoxDD = styled(UserBox)`
   cursor: grab;
@@ -40,18 +54,18 @@ export class WaitlistUsers extends React.Component {
 	};
 
 	removeUser(id) {
-		this.props.roomModeWaitlistStore.removeUser(id);
+		waitlistRemoveUser(id);
 	}
 
 	moveUser = (lastPos, newPos) => {
-		this.props.roomModeWaitlistStore.moveUser(lastPos, newPos);
+		waitlistMoveUser(lastPos, newPos);
 	};
 
 	renderUser(user, i) {
 		return (
 			<User pos={i} {...user}>
 				<Access name="waitlistRemoveUser">
-					<UserAction key={i} onClick={() => this.removeUser(user.id)}>
+					<UserAction key={'delete'} onClick={() => this.removeUser(user.id)}>
 						Delete
 					</UserAction>
 				</Access>
@@ -64,7 +78,9 @@ export class WaitlistUsers extends React.Component {
 
 		return (
 			<UsersList>
-				{users.length == 0 && <NoUsers>Waitlist is empty.</NoUsers>}
+				{users.length == 0 && <NoUsers>
+					<FormattedMessage id="room.waitlist.users.empty" />
+				</NoUsers>}
 				{users.map((user, i) => <UserBox key={user.id}>{this.renderUser(user, i)}</UserBox>)}
 			</UsersList>
 		);
@@ -78,7 +94,9 @@ export class WaitlistUsers extends React.Component {
 				<Droppable droppableId="droppable">
 					{(droppableProvided) => (
 						<UsersList innerRef={droppableProvided.innerRef}>
-							{users.length == 0 && <NoUsers>Waitlist is empty.</NoUsers>}
+							{users.length == 0 && <NoUsers>
+								<FormattedMessage id="room.waitlist.users.empty" />
+							</NoUsers>}
 							{users.map((user, i) => (
 								<Draggable
 									key={user.id}
@@ -112,6 +130,13 @@ export class WaitlistUsers extends React.Component {
 	render() {
 		return (
 			<Box>
+				<Access name="waitlistClear">
+					<TopPanel>
+						<Button onClick={() => waitlistClear()}>
+							<FormattedMessage id="room.waitlist.users.clear" />
+						</Button>
+					</TopPanel>
+				</Access>
 				<Access name="waitlistMoveUser">
 					{this.renderDDList()}
 				</Access>
