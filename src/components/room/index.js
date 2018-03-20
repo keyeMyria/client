@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { Scrollbars } from 'react-custom-scrollbars';
 
+import { injectIntl } from 'utils/intl';
 import { Modal } from 'uikit';
 import { Access } from 'helpers/access';
 import { RoomModal } from './modal';
@@ -15,6 +16,7 @@ import { RoomChatContainer } from 'containers/room/chat';
 import { RoomProfile } from './profile';
 import { RoomSetBan } from './setUserBan';
 import { RoomSetRole } from './setUserRole';
+import { RoomCollectionContainer } from 'containers/room/collection';
 import RoomManage from './manage';
 import { LeftPanel } from './leftPanel';
 import { WaitlistPlaylist } from './board/waitlist/playlist';
@@ -76,6 +78,7 @@ const Chat = styled.div`
 	overflow: hidden;
 `;
 
+@injectIntl()
 @inject(
 	'roomProfileStore',
 	'roomSetBanFormStore',
@@ -84,6 +87,7 @@ const Chat = styled.div`
 @observer
 export class Room extends React.Component {
 	render() {
+		const { formatMessage } = this.props.intl;
 		const {
 			roomProfileStore,
 			roomSetBanFormStore,
@@ -100,15 +104,34 @@ export class Room extends React.Component {
 						<LeftPanel />
 					</Left>
 					<Middle>
+							<RoomModal
+								name="collection"
+								title={formatMessage({
+									id: "room.modal.collection"
+								})}>
+							<RoomCollectionContainer />
+						</RoomModal>
 						<Access name="manageRoom">
-							<RoomModal name="manage" title="Room Manage">
+							<RoomModal
+								name="manage"
+								title={formatMessage({
+									id: "room.modal.manage"
+								})}>
 								<RoomManage />
 							</RoomModal>
 						</Access>
-						<RoomModal name="waitlistModePlaylist" title="My Playlist for Room">
+						<RoomModal
+							name="waitlistModePlaylist"
+							title={formatMessage({
+								id: "room.modal.waitlistPlaylist"
+							})}>
 							<WaitlistPlaylist />
 						</RoomModal>
-						<RoomModal name="waitlistModeUsers" title="Waitlist Users">
+						<RoomModal
+							name="waitlistModeUsers"
+							title={formatMessage({
+								id: "room.modal.waitlistUsers"
+							})}>
 							<WaitlistUsers />
 						</RoomModal>
 						<HeaderBox>
@@ -131,19 +154,25 @@ export class Room extends React.Component {
 				<Modal
 					isOpen={roomProfileStore.open}
 					onClose={() => { roomProfileStore.open = false }}
-					title="Profile">
+					title={formatMessage({
+						id: "room.modal.profile"
+					})}>
 					<RoomProfile />
 				</Modal>
 				<Modal
 					isOpen={roomSetBanFormStore.open}
 					onClose={() => { roomSetBanFormStore.open = false }}
-					title="Ban User In The Room">
+					title={formatMessage({
+						id: "room.modal.setBan"
+					})}>
 					<RoomSetBan />
 				</Modal>
 				<Modal
 					isOpen={roomSetRoleFormStore.open}
 					onClose={() => { roomSetRoleFormStore.open = false }}
-				 	title="Set User Role In The Room">
+				 	title={formatMessage({
+						id: "room.modal.setRole"
+					})}>
 					<RoomSetRole />
 				</Modal>
 			</Box>
