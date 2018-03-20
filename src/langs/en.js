@@ -59,5 +59,5 @@ export default {
   "room.chat.toNewMessages": "To new messages",
   "room.chat.messageInput": "Message...",
   "room.chat.denyLogin": "Login to typing message.",
-  "room.chat.denyFollowerMode": "You must be a follower for more than 30 minutes to typing messages."
+  "room.chat.denyFollowerMode": "You must be a follower for more than 5 minutes to typing messages."
 }

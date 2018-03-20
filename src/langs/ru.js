@@ -59,5 +59,5 @@ export default {
   "room.chat.toNewMessages": "К новым сообщениям",
   "room.chat.messageInput": "Сообщение...",
   "room.chat.denyLogin": "Войдите чтобы писать сообщения.",
-  "room.chat.denyFollowerMode": "Вы должны быть подписаны на эту комнату более 30 минут чтобы писать сообщения."
+  "room.chat.denyFollowerMode": "Вы должны быть подписаны на эту комнату более 5 минут чтобы писать сообщения."
 }

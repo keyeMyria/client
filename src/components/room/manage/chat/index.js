@@ -22,14 +22,14 @@ export class RoomChatManager extends React.Component {
         <Access name="changeFollowerMode">
           <SWRow 
             title="Follower Mode"
-            description="В чат могут писать только подписчики, которые подписались более 30 минут назад"
+            description="В чат могут писать только подписчики, которые подписались более 5 минут назад"
             isActive={followerMode}
             onChange={() => changeFollowerMode()}/>
         </Access>
         <Access name="changeSlowMode">
           <SWRow 
             title="Slow Mode"
-            description="Включить задержку между отправкой сообщений в чате (2 секунды)"
+            description="Включить задержку между отправкой сообщений в чате (10 секунд)"
             isActive={slowMode}
             onChange={() => changeSlowMode()}/>
         </Access>
