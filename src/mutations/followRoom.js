@@ -20,4 +20,5 @@ export const followRoom = async () => {
 
   roomStore.followersCount = data.followRoom;
   userRoomStore.follower = true;
+  userRoomStore.lastFollowDate = +new Date();
 }
