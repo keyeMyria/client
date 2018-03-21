@@ -9,6 +9,7 @@ export const userRoom = async () => {
         userRoom(roomId: $roomId) {
           banned
           follower
+          lastFollowDate
           role
           unbanDate
         }
@@ -28,6 +29,7 @@ export const userRoom = async () => {
   userRoomStore.role = userRoom.role;
   userRoomStore.banned = userRoom.banned;
   userRoomStore.follower = userRoom.follower;
+  userRoomStore.lastFollowDate = userRoom.lastFollowDate;
 
   if (userRoom.banned) {
     roomStore.status = 'userbanned';

@@ -2,6 +2,8 @@ import React from 'react';
 import isMobile from 'ismobilejs';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
+import addSeconds from 'date-fns/add_seconds';
+import isBefore from 'date-fns/is_before';
 import { injectIntl } from 'utils/intl';
 import { theme } from 'colors';
 import { Line } from 'rc-progress';
@@ -89,7 +91,7 @@ export class SendMessageForm extends React.Component {
 
     this.state = {
       slowMode: false,
-      slowModeDealy: 2,
+      slowModeDealy: 10,
       slowModeProgress: 100
     };
   }
@@ -167,6 +169,28 @@ export class SendMessageForm extends React.Component {
     });
   }
 
+  accessFollowerMode = () => {
+    const { follower, lastFollowDate } = this.props.userRoomStore;
+
+    if (!this.props.roomStore.followerMode) {
+      return true;
+    }
+
+    if (this.access('sendMessageFollowerModeIgnore')) {
+      return true;
+    }
+
+    if (!follower) {
+      return false;
+    }
+
+    if (!isBefore(addSeconds(lastFollowDate, 60 * 5), +new Date())) {
+      return false;
+    }
+
+    return true;
+  }
+
   render() {
     const { formatMessage } = this.props.intl;
 
@@ -185,17 +209,17 @@ export class SendMessageForm extends React.Component {
         </Access>
         <Right>
           <Access name="sendMessage">
-            {this.props.roomStore.followerMode && <Access
-              name="sendMessageFollowerModeIgnore" invert>
+            {this.accessFollowerMode() ?
+              <input
+                autoFocus={!isMobile.any}
+                onKeyPress={this.handleKeyPress}
+                placeholder={formatMessage({ id: "room.chat.messageInput" })}
+                ref={(input) => { this.textInput = input; }} />
+              :
               <ChatSendBlock>
                 {formatMessage({ id: "room.chat.denyFollowerMode" })}
               </ChatSendBlock>
-            </Access>}
-            <input
-              autoFocus={!isMobile.any}
-              onKeyPress={this.handleKeyPress}
-              placeholder={formatMessage({ id: "room.chat.messageInput" })}
-              ref={(input) => { this.textInput = input; }} />
+            }           
           </Access>
           <Access name="sendMessage" invert>
             <ChatSendBlock>

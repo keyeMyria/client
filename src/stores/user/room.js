@@ -5,6 +5,7 @@ export class UserRoomStore {
   @observable role;
   @observable banned;
   @observable follower;
+  @observable lastFollowDate;
 
   constructor() {
     this.reset();
@@ -22,6 +23,7 @@ export class UserRoomStore {
     this.role = 'guest';
     this.banned = false;
     this.follower = false;
+    this.lastFollowDate = null;
   }
 }
 
