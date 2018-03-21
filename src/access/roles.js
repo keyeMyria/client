@@ -40,7 +40,9 @@ export const accessRoles = [
       'waitlistClear',
       'collectionAddSource',
       'collectionRemoveSource',
-      'collectionStart'
+      'collectionStart',
+      'waitlistLock',
+      'waitlistLockIgnore'
     ]
   },
   {

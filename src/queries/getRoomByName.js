@@ -15,6 +15,7 @@ export const getRoomByName = async (roomName) => {
           avatar
           followerMode
           slowMode
+          waitlistLock
           followersCount
           collectionCount
           connectionsCount
@@ -51,6 +52,7 @@ export const getRoomByName = async (roomName) => {
   roomStore.followerMode = getRoomByName.followerMode;
   roomStore.slowMode = getRoomByName.slowMode;
   roomStore.followersCount = getRoomByName.followersCount;
+  roomStore.waitlistLock = getRoomByName.waitlistLock;
   roomStore.collectionCount = getRoomByName.collectionCount;
   roomStore.connectionsCount = getRoomByName.connectionsCount;
   roomStore.usersCount = getRoomByName.usersCount;

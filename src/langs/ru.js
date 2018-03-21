@@ -39,6 +39,8 @@ export default {
   "room.collection.searchInput": "Поиск по коллекции",
   "room.collection.addSourceButton": "Добавить",
 
+  "room.waitlist.denyLogin": "Войдите чтобы играть",
+  "room.waitlist.lock": "Список ожидания заблокирован",
   "room.waitlist.start": "Начать игру",
   "room.waitlist.join": "Присоединиться к игре",
   "room.waitlist.leave": "Покинуть игру",

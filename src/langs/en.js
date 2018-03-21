@@ -39,6 +39,8 @@ export default {
   "room.collection.searchInput": "Search by collection",
   "room.collection.addSourceButton": "Add Source",
 
+  "room.waitlist.denyLogin": "Login to start play",
+  "room.waitlist.lock": "Waitlist is lock",
   "room.waitlist.start": "Start Playing",
   "room.waitlist.join": "Join Playing",
   "room.waitlist.leave": "Leave Playing",

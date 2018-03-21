@@ -10,6 +10,7 @@ export class RoomStore {
   @observable avatar;
   @observable followerMode;
   @observable slowMode;
+  @observable waitlistLock;
   @observable mode;
   @observable collectionCount;
   @observable connectionsCount;
@@ -34,6 +35,10 @@ export class RoomStore {
       this.slowMode = isActive;
     });
 
+    wsAPI.on('waitlistLockChanged', (isLock) => {
+      this.waitlistLock = isLock;
+    });
+
     wsAPI.on('roomTitleChanged', (title) => {
       this.title = title;
     });
@@ -52,6 +57,7 @@ export class RoomStore {
     this.avatar = null;
     this.followerMode = false;
     this.slowMode = false;
+    this.waitlistLock = false;
     this.mode = null;
     this.collectionCount = 0;
     this.connectionsCount = 0;

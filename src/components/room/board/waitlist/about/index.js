@@ -10,6 +10,8 @@ import { waitlistAdd } from 'mutations/waitlistAdd';
 import { waitlistRemoveUser } from 'mutations/waitlistRemoveUser';
 import { waitlistKick } from 'mutations/waitlistKick';
 import { humanNumbers } from 'utils';
+import { checkAccess } from 'utils/access';
+import { uniq } from 'ramda';
 
 const Box = styled.div`
 	display: flex;
@@ -104,7 +106,7 @@ const HideNumber = styled.span`
 	margin-left: 4px;
 `;
 
-@inject('roomModeWaitlistStore', 'userStore', 'roomStore')
+@inject('roomModeWaitlistStore', 'userStore', 'userRoomStore', 'roomStore')
 @observer
 export class RoomBoardAboutWaitlist extends React.Component {
 	waitlistAdd() {
@@ -116,6 +118,17 @@ export class RoomBoardAboutWaitlist extends React.Component {
 			waitlistAdd();
 		}
 	}
+
+	access(actionName) {
+    const { userStore, userRoomStore } = this.props;
+    
+    const current = {
+      id: userStore.id,
+      roles: uniq([userStore.role, userRoomStore.role])
+    }
+
+    return checkAccess(actionName, current);
+  }
 
 	render() {
 		const { roomModeWaitlistStore, userStore, roomStore } = this.props;
@@ -134,12 +147,23 @@ export class RoomBoardAboutWaitlist extends React.Component {
 
 		// Start Playing (waitlistAdd) - noPlaying
 		let actionView = (
-			<Button onClick={() => this.waitlistAdd()}>
-				{noPlaying ? 
-					<FormattedMessage id="room.waitlist.start"/> : 
-					<FormattedMessage id="room.waitlist.join"/>
-				}
-			</Button>
+			<React.Fragment>
+				<Access name="waitlistAdd">
+				<Button onClick={() => this.waitlistAdd()}>
+					{noPlaying ? 
+						<FormattedMessage id="room.waitlist.start"/> : 
+						<FormattedMessage id="room.waitlist.join"/>
+					}
+				</Button>
+				</Access>
+				<Access name="waitlistAdd" invert>
+					<Button
+						color={theme.accent1.darken(0.15)}
+						onClick={() => {}}>
+						<FormattedMessage id="room.waitlist.denyLogin"/>
+					</Button>
+				</Access>
+			</React.Fragment>
 		);
 
 		if (currentIsPlaying) {
@@ -166,6 +190,16 @@ export class RoomBoardAboutWaitlist extends React.Component {
 					<FocusNumber>{currentWaitPosition + 1}</FocusNumber>
 					<HideNumber>/ {users.length}</HideNumber>
 				</React.Fragment>
+			);
+		}
+
+		if (roomStore.waitlistLock && !this.access('waitlistLockIgnore')) {
+			actionView = (
+				<Button
+					color={theme.accent1.darken(0.15)}
+					onClick={() => {}}>
+					<FormattedMessage id="room.waitlist.lock"/>
+				</Button>
 			);
 		}
 

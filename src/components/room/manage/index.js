@@ -33,7 +33,6 @@ const Tab = styled(NavTab)`
   cursor: pointer;
   font-size: 13px;
   border-radius: 4px;
-  border-left: 2px solid transparent;
   background: ${({ isActive }) => isActive ? theme.accent1 : theme.dark2};
 `;
 
