@@ -36,7 +36,7 @@ export class RoomModeWaitlistStore {
     wsAPI.on('waitlistClear', this.clear);
     wsAPI.on('waitlistAddUser', this.addUser);
     wsAPI.on('waitlistMoveUser', ({ lastPos, newPos }) => {
-      this.moveSource(lastPos, newPos); 
+      this.moveUser(lastPos, newPos); 
     });
     wsAPI.on('waitlistRemoveUser', this.removeUser);
 
