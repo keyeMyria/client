@@ -5,6 +5,10 @@ import { theme } from 'colors';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { RoomUser } from './user';
 
+const Box = styled.div`
+  height: calc(100% - 45px);
+`;
+
 const Block = styled.div`
   padding: 5px 0;
 `;
@@ -71,32 +75,36 @@ export class RoomUsers extends React.Component {
 
     if (users.length == 0) {
       return (
-        <Scrollbars autoHide={true}>
-          <Users>
-            <UsersEmpty>
-              {'No Users Online'}
-            </UsersEmpty>
-          </Users>
-        </Scrollbars>
+        <Box>
+          <Scrollbars autoHide={true}>
+            <Users>
+              <UsersEmpty>
+                {'No Users Online'}
+              </UsersEmpty>
+            </Users>
+          </Scrollbars>
+        </Box>
       );
     }
   
     return (
-      <Scrollbars autoHide={true}>
-        <Users>
-          <UsersBlock
-            title="Site Staff"
-            showRole="site"
-            color={theme.siteStaff}
-            users={siteStaff} />
-          <UsersBlock
-            title="Room Staff"
-            showRole="room"
-            color={theme.roomStaff}
-            users={roomStaff} />
-          <UsersBlock title="Users" users={others} />
-        </Users>
-      </Scrollbars>
+      <Box>
+        <Scrollbars autoHide={true}>
+          <Users>
+            <UsersBlock
+              title="Site Staff"
+              showRole="site"
+              color={theme.siteStaff}
+              users={siteStaff} />
+            <UsersBlock
+              title="Room Staff"
+              showRole="room"
+              color={theme.roomStaff}
+              users={roomStaff} />
+            <UsersBlock title="Users" users={others} />
+          </Users>
+        </Scrollbars>
+      </Box>
     );
   }
 }
