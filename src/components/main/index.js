@@ -7,7 +7,6 @@ import { Access } from 'helpers/access';
 
 import { Button, ButtonwGroup, Modal } from 'uikit';
 
-import TopNav from 'components/topNav';
 import { CreateRoom } from './createRoom';
 import { MainRoom } from './room';
 
@@ -26,9 +25,9 @@ const MainTopNav = styled.div`
 `;
 
 const Rooms = styled.div`
-  width: 1000px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 20px 10px;
+  padding: 20px 20px;
 `;
 
 const RoomsBox = styled.div`
@@ -152,7 +151,6 @@ export class Main extends React.Component {
   render() {
     return (
       <MainBox>
-        <MainTopNav><TopNav /></MainTopNav>
         <Rooms>
           <RoomsHeader>
             <RoomsTitleBox>

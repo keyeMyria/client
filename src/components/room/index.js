@@ -9,7 +9,6 @@ import { Modal } from 'uikit';
 import { Access } from 'helpers/access';
 import { RoomModal } from './modal';
 
-import TopNav from 'components/topNav';
 import { RoomTopNav } from './topNav';
 import { RoomBoard } from './board';
 import { RoomChatContainer } from 'containers/room/chat';
@@ -18,7 +17,7 @@ import { RoomSetBan } from './setUserBan';
 import { RoomSetRole } from './setUserRole';
 import { RoomCollectionContainer } from 'containers/room/collection';
 import RoomManage from './manage';
-import { LeftPanel } from './leftPanel';
+
 import { WaitlistPlaylist } from './board/waitlist/playlist';
 import { WaitlistUsers } from './board/waitlist/users';
 
@@ -28,24 +27,9 @@ const Box = styled.div`
 	background: ${theme.dark2};
 `;
 
-const Top = styled.div`
-	height: 50px;
-	width: 100%;
-	border-bottom: 1px solid ${theme.dark1};
-	position: relative;
-	z-index: 1000;
-`;
-
 const Content = styled.div`
-	height: calc(100% - 50px);
-	display: flex;
-`;
-
-const Left = styled.div`
 	height: 100%;
-	width: 240px;
-	overflow: hidden;
-	background: ${theme.dark1};
+	display: flex;
 `;
 
 const Middle = styled.div`
@@ -96,19 +80,13 @@ export class Room extends React.Component {
 
 		return (
 			<Box>
-				<Top>
-					<TopNav />
-				</Top>
 				<Content>
-					<Left>
-						<LeftPanel />
-					</Left>
 					<Middle>
-							<RoomModal
-								name="collection"
-								title={formatMessage({
-									id: "room.modal.collection"
-								})}>
+						<RoomModal
+							name="collection"
+							title={formatMessage({
+								id: "room.modal.collection"
+							})}>
 							<RoomCollectionContainer />
 						</RoomModal>
 						<Access name="manageRoom">
