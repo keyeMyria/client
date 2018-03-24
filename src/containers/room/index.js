@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { reaction } from 'mobx';
 import { wsAPI } from 'utils/wsapi';
 import { roomStore, userRoomStore } from 'stores';
 
@@ -11,12 +12,38 @@ import RoomUserBanned from 'components/room/userBanned';
 
 import { getRoomByName } from 'queries/getRoomByName';
 
-@inject('roomStore')
-@observer
 export class RoomContainer extends React.Component {
+  constructor(props) {
+		super(props);
+    this.disposers = [];
+    this.state = {
+      status: 'loading'
+    };
+  }
+
   componentDidMount() {
+    this.disposers = [
+      reaction(() => roomStore.status, status => {
+				this.setState({ status });
+			})
+    ];
+
     const { roomName } = this.props.routeParams;
     getRoomByName(roomName);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    wsAPI.action('leave');
+    roomStore.reset();
+    userRoomStore.reset();
+    getRoomByName(nextProps.routeParams.roomName);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.routeParams.roomName != this.props.routeParams.roomName ||
+      nextState.status != this.state.status
+    );
   }
 
   componentWillUnmount() {
@@ -26,7 +53,7 @@ export class RoomContainer extends React.Component {
   }
 
   render() {
-    switch (this.props.roomStore.status) {
+    switch (this.state.status) {
       case 'loading':
         return <Loading>Loading...</Loading>
       case 'error':
