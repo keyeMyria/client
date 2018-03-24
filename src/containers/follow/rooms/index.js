@@ -1,5 +1,5 @@
 import React from 'react';
-import { FollowRooms } from 'components/room/leftPanel/Rooms';
+import { FollowRooms } from 'components/leftPanel/Rooms';
 import { followRoomsStore } from 'stores';
 import { getFollowRooms } from 'queries/getFollowRooms';
 
