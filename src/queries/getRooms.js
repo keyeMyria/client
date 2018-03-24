@@ -11,8 +11,7 @@ export const getRooms = async () => {
           name
           title
           avatar
-          usersCount
-          guestsCount
+          connectionsCount
           contentTitle
         }
       }

@@ -14,17 +14,13 @@ export class RoomStore {
   @observable mode;
   @observable collectionCount;
   @observable connectionsCount;
-  @observable usersCount;
-  @observable guestsCount;
   @observable followersCount;
 
   constructor() {
     this.reset();
 
-    wsAPI.on('connectionsCountChanged', (counts) => {
-      this.connectionsCount = counts.connectionsCount;
-      this.usersCount = counts.usersCount;
-      this.guestsCount = counts.guestsCount;
+    wsAPI.on('connectionsCountChanged', (connectionsCount) => {
+      this.connectionsCount = connectionsCount;
     });
 
     wsAPI.on('followerModeChanged', (isActive) => {
@@ -61,8 +57,6 @@ export class RoomStore {
     this.mode = null;
     this.collectionCount = 0;
     this.connectionsCount = 0;
-    this.usersCount = 0;
-    this.guestsCount = 0;
     this.followersCount = 0;
   }  
 }

@@ -11,8 +11,7 @@ export const getFollowRooms = async () => {
           name
           title
           avatar
-          usersCount
-          guestsCount
+          connectionsCount
           contentTitle
         }
       }

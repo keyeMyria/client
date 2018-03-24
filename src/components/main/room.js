@@ -103,8 +103,7 @@ const getPlayTypeTitle = playType => {
 
 export const MainRoom = ({
   name,
-  usersCount,
-  guestsCount,
+  connectionsCount,
   avatar,
   title,
   contentTitle
@@ -112,8 +111,8 @@ export const MainRoom = ({
   <Box>
     <Stats>
       <div>
-        <Online title={humanNumbers(usersCount + guestsCount)}>
-          {shortNumbers(usersCount + guestsCount)}
+        <Online title={humanNumbers(connectionsCount)}>
+          {shortNumbers(connectionsCount)}
         </Online>
         <OnlineTitle>Online</OnlineTitle>
       </div>

@@ -19,8 +19,6 @@ export const getRoomByName = async (roomName) => {
           followersCount
           collectionCount
           connectionsCount
-          usersCount
-          guestsCount
           mode
         }
       }
@@ -55,8 +53,6 @@ export const getRoomByName = async (roomName) => {
   roomStore.waitlistLock = getRoomByName.waitlistLock;
   roomStore.collectionCount = getRoomByName.collectionCount;
   roomStore.connectionsCount = getRoomByName.connectionsCount;
-  roomStore.usersCount = getRoomByName.usersCount;
-  roomStore.guestsCount = getRoomByName.guestsCount;
   roomStore.mode = getRoomByName.mode;
 
   roomStore.status = 'ready';
