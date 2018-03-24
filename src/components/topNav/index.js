@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme } from 'colors';
 import { router } from 'utils/router';
 import { Caret } from 'uikit';
-
+import Button from './button';
 import { TopNavUser } from './user';
 import { Logo } from './logo';
 
@@ -33,6 +33,20 @@ const Lang = styled.div`
   color: ${theme.accent2};
 `;
 
+const MenuItem = styled.a`
+  display: flex;
+  color: ${theme.accent2};
+  font-size: 12.5px;
+  align-items: center;
+  padding: 0 14px;
+  cursor: pointer;
+  height: 100%;
+
+  :hover {
+    color: ${theme.accent2.lighten(0.2)};
+  }
+`;
+
 const Right = styled.div`
   display: flex;
   align-items: center;
@@ -45,7 +59,9 @@ export default ({ children }) => (
     <Left>
       <LogoLink onClick={() => router.navigate(`/${name}`)}><Logo /></LogoLink>
       {/* <Lang>RU</Lang><Caret /> */}
-      {children}
+      <MenuItem href="https://vk.com/ravepro" target="_blank">VK</MenuItem>
+      <MenuItem href="https://discord.gg/bhJPuNe" target="_blank">Discord</MenuItem>
+      <MenuItem href="https://github.com/ravepro/client" target="_blank">GitHub</MenuItem>
     </Left>
     <Right>
       <TopNavUser />
