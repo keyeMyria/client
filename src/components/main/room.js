@@ -8,7 +8,7 @@ import { shortNumbers, humanNumbers } from 'utils';
 const Box = styled.div`
   display: flex;
   width: 100%;
-  height: 80px;
+  height: 60px;
   background: ${theme.dark2};
   margin-bottom: 5px;
   border-radius: 5px;
@@ -22,13 +22,13 @@ const Stats = styled.div`
 `;
 
 const Online = styled.div`
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
 `;
 
 const OnlineTitle = styled.div`
   padding-top: 5px;
-  font-size: 12px;
+  font-size: 11px;
   text-align: center;
   color: ${theme.accent2};
 `;
@@ -42,8 +42,8 @@ const Avatar = styled.div`
 `;
 
 const AvatarBox = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 44px;
+  height: 44px;
   border-radius: 100%;
 `;
 
@@ -61,13 +61,13 @@ const Data = styled.div`
 `;
 
 const RoomTitle = styled.div`
-  font-size: 15px;
+  font-size: 13px;
   cursor: pointer;
 `;
 
 const PlayData = styled.div`
   padding-top: 5px;
-  font-size: 12px;
+  font-size: 11px;
   color: ${theme.accent2};
 `;
 

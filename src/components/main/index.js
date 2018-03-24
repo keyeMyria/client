@@ -51,7 +51,7 @@ const RoomsTitleBox = styled.div`
 `;
 
 const RoomsTitle = styled.div`
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 const RoomsDescription = styled.div`
