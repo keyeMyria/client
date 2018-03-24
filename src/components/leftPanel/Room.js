@@ -83,13 +83,12 @@ const Online = styled.div`
 
 export const LeftPanelRoom = ({
   name,
-  usersCount,
-  guestsCount,
+  connectionsCount,
   avatar,
   title,
   contentTitle
 }) => (
-  <Box onClick={() => window.location.href = `/${name}`}>
+  <Box onClick={() => router.navigate(`/${name}`)}>
     <Left>
       <Avatar>
         <AvatarImg src={avatar || 'https://ravepro.ams3.digitaloceanspaces.com/logo.jpg'} />
@@ -102,9 +101,9 @@ export const LeftPanelRoom = ({
       </Content>
     </Middle>
     <Right>
-      {/* <Online title={humanNumbers(usersCount + guestsCount)}>
-        {shortNumbers(usersCount + guestsCount)}
-      </Online> */}
+      <Online title={humanNumbers(connectionsCount)}>
+        {shortNumbers(connectionsCount)}
+      </Online>
     </Right>
   </Box>
 );
